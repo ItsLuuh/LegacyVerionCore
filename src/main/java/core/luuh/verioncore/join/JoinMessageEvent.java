@@ -1,4 +1,4 @@
-package java.core.luuh.verioncore.join;
+package core.luuh.verioncore.join;
 
 import core.luuh.verioncore.VerionCore;
 import core.luuh.verioncore.utils.chatcolor;

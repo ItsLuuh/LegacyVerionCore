@@ -1,4 +1,4 @@
-package java.core.luuh.verioncore.spawn;
+package core.luuh.verioncore.spawn;
 
 import core.luuh.verioncore.VerionCore;
 import core.luuh.verioncore.utils.chatcolor;

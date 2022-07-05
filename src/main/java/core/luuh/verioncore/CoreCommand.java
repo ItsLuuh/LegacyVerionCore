@@ -1,6 +1,5 @@
-package java.core.luuh.verioncore;
+package core.luuh.verioncore;
 
-import core.luuh.verioncore.VerionCore;
 import core.luuh.verioncore.utils.chatcolor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

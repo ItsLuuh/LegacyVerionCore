@@ -1,4 +1,4 @@
-package java.core.luuh.verioncore.fly;
+package core.luuh.verioncore.fly;
 
 import core.luuh.verioncore.VerionCore;
 import core.luuh.verioncore.utils.chatcolor;

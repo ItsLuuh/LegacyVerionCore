@@ -1,4 +1,4 @@
-package java.core.luuh.verioncore.gamemode;
+package core.luuh.verioncore.gamemode;
 
 import core.luuh.verioncore.VerionCore;
 import core.luuh.verioncore.utils.chatcolor;

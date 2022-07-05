@@ -1,4 +1,4 @@
-package java.core.luuh.verioncore.utils;
+package core.luuh.verioncore.utils;
 
 
 import org.bukkit.ChatColor;

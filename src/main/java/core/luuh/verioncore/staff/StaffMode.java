@@ -1,4 +1,4 @@
-package java.core.luuh.verioncore.staff;
+package core.luuh.verioncore.staff;
 
 import core.luuh.verioncore.VerionCore;
 import core.luuh.verioncore.utils.chatcolor;

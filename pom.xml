@@ -6,7 +6,7 @@
 
     <groupId>core.luuh</groupId>
     <artifactId>VerionCore</artifactId>
-    <version>1.0-ROMA</version>
+    <version>1.2-ROMA</version>
     <packaging>jar</packaging>
 
     <name>VerionCore</name>

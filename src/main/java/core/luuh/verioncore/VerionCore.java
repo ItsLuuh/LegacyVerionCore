@@ -6,15 +6,10 @@ import core.luuh.verioncore.join.JoinMessageEvent;
 import core.luuh.verioncore.join.QuitMessageEvent;
 import core.luuh.verioncore.spawn.SetSpawn;
 import core.luuh.verioncore.spawn.SpawnCommand;
-import core.luuh.verioncore.staff.StaffChat;
-import core.luuh.verioncore.staff.StaffMode;
 import core.luuh.verioncore.utils.NoDamageForever;
 import core.luuh.verioncore.utils.NoRainForever;
 import core.luuh.verioncore.utils.VoidTP;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class VerionCore extends JavaPlugin {
@@ -52,9 +47,6 @@ public final class VerionCore extends JavaPlugin {
         getCommand("gms").setExecutor(new GamemodeSurvival(this));
         getCommand("gma").setExecutor(new GamemodeAdventure(this));
         getCommand("gmsp").setExecutor(new GamemodeSpectator(this));
-        getCommand("staffchat").setExecutor(new StaffChat(this));
-        getCommand("staffmode").setExecutor(new StaffMode(this));
-
     }
 
     public void registerAll(){

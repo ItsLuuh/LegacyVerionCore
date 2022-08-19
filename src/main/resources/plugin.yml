@@ -4,6 +4,9 @@ main: core.luuh.verioncore.VerionCore
 api-version: 1.16
 authors: [ ItsLuuh ]
 description: Based Core Essential
+depend:
+  - PlaceholderAPI
+  - Vault
 commands:
   core:
     description: Dimostra l'appartenenza del plugin
@@ -43,3 +46,5 @@ commands:
     description: Imposta lo spawn del server
   spawn:
     description: Teletrasporto allo spawn del server
+  speed:
+    description: Imposta la velocità del tuo movimento

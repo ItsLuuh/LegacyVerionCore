@@ -12,11 +12,17 @@ public class NoDamageForever implements Listener {
 
     public NoDamageForever(VerionCore plugin) {this.plugin = plugin;}
 
+    private static GeneralUtils settings = GeneralUtils.getInstance();
+
     @EventHandler
     public void onPlayerDamage(EntityDamageEvent e){
 
-        if(e.getEntity() instanceof Player){
-            e.setCancelled(true);
+        if(settings.getBooleanFromConfig("REMOVE_DAMAGE")) {
+            if (e.getEntity() instanceof Player) {
+                if(!(e.getCause() == EntityDamageEvent.DamageCause.VOID)) {
+                    e.setCancelled(true);
+                }
+            }
         }
 
     }

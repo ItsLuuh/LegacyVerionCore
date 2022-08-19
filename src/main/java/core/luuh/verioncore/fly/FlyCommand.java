@@ -1,6 +1,7 @@
 package core.luuh.verioncore.fly;
 
 import core.luuh.verioncore.VerionCore;
+import core.luuh.verioncore.utils.GeneralUtils;
 import core.luuh.verioncore.utils.chatcolor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,7 +15,7 @@ public class FlyCommand implements CommandExecutor {
 
     public FlyCommand(VerionCore plugin) {this.plugin = plugin;}
 
-
+    private static GeneralUtils settings = GeneralUtils.getInstance();
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -29,37 +30,37 @@ public class FlyCommand implements CommandExecutor {
                     if (!(args.length > 0)) {
                         if (player.getAllowFlight()) {
                             player.setAllowFlight(false);
-                            player.sendMessage(chatcolor.chat(prefix + "Hai impostato la modalità volo a &cOFF&f."));
+                            player.sendMessage(chatcolor.chat(settings.getFromConfig("MSG_FLY_OFF", null)));
                         } else {
                             player.setAllowFlight(true);
-                            player.sendMessage(chatcolor.chat(prefix + "Hai impostato la modalità volo a &aON&f."));
+                            player.sendMessage(chatcolor.chat(settings.getFromConfig("MSG_FLY_ON", null)));
                         }
                     } else {
                         Player target = plugin.getServer().getPlayer(args[0]);
                         if (target != null) {
                             if (target.getAllowFlight()) {
                                 target.setAllowFlight(false);
-                                target.sendMessage(chatcolor.chat(prefix + "La tua modalità volo è stata impostata a &cOFF&f."));
-                                player.sendMessage(chatcolor.chat(prefix + "Hai impostato la modalità volo di " + target.getDisplayName() + " a &cOFF&f."));
+                                player.sendMessage(chatcolor.chat(settings.getFromConfig("MSG_STEC_FLY_OFF", target)));
+                                target.sendMessage(chatcolor.chat(settings.getFromConfig("MSG_STN_FLY_OFF", player)));
                             } else {
                                 target.setAllowFlight(true);
-                                target.sendMessage(chatcolor.chat(prefix + "La tua modalità volo è stata impostata a &aON."));
-                                player.sendMessage(chatcolor.chat(prefix + "Hai impostato la modalità volo di " + target.getDisplayName() + " a &aON&f."));
+                                player.sendMessage(chatcolor.chat(settings.getFromConfig("MSG_STEC_FLY_ON", target)));
+                                target.sendMessage(chatcolor.chat(settings.getFromConfig("MSG_STN_FLY_ON", player)));
 
 
                             }
                         } else {
                             if (args[0].equalsIgnoreCase("on")) {
                                 player.setAllowFlight(true);
-                                player.sendMessage(chatcolor.chat(prefix + "Hai impostato la modalità volo a &aON&f."));
+                                player.sendMessage(chatcolor.chat(settings.getFromConfig("MSG_FLY_ON", null)));
                             } else if (args[0].equalsIgnoreCase("off")) {
                                 player.setAllowFlight(false);
-                                player.sendMessage(chatcolor.chat(prefix + "Hai impostato la modalità volo a &cOFF&f."));
+                                player.sendMessage(chatcolor.chat(settings.getFromConfig("MSG_FLY_OFF", null)));
                             }
                         }
                     }
                 } else {
-                    player.sendMessage(chatcolor.chat(prefix + "Non hai il permesso per eseguire questo comando."));
+                    player.sendMessage(chatcolor.chat(settings.getCaseFromConfig(1)));
                 }
             }
         } else {

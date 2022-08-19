@@ -1,7 +1,7 @@
 package core.luuh.verioncore.utils;
 
 import core.luuh.verioncore.VerionCore;
-import net.milkbowl.vault.chat.Chat;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,18 +17,16 @@ public class ChatMessageEvent implements Listener {
     public void onMessageEvent(AsyncPlayerChatEvent e){
 
         String messaggio = e.getMessage();
-        Chat chat = VerionCore.getChat();
-        String message = plugin.getConfig().getString("chat");
-        Player player = e.getPlayer();
-        String playergroup = chat.getPrimaryGroup(player);
-        String playergroupprefix = chat.getGroupPrefix(e.getPlayer().getWorld(), playergroup);
-        String playergroupsuffix = chat.getGroupSuffix(e.getPlayer().getWorld(), playergroup);
-        message.replaceAll("%player%",e.getPlayer().getDisplayName());
-        message.replaceAll("%prefix%", playergroupprefix);
-        message.replaceAll("%suffix%", playergroupsuffix);
-        message.replaceAll("%message%", messaggio);
-        e.setCancelled(true);
-        plugin.getServer().broadcastMessage(chatcolor.chat(chatcolor.hex(message.replaceAll("%player%",e.getPlayer().getDisplayName()).replaceAll("%prefix%", playergroupprefix).replaceAll("%suffix%", playergroupsuffix).replaceAll("%message%", messaggio))));
+        String message = chatcolor.chat(chatcolor.hex(plugin.getConfig().getString("chat")));
+        if(message != null ) {
+            e.setCancelled(true);
+            if(e.getPlayer().hasPermission("*")) {
+                plugin.getServer().broadcastMessage(chatcolor.chat(chatcolor.hex(PlaceholderAPI.setPlaceholders(e.getPlayer(), message).replaceAll("%message%", messaggio))));
+            } else {
+                plugin.getServer().broadcastMessage(PlaceholderAPI.setPlaceholders(e.getPlayer(), message).replaceAll("%message%", messaggio));
+
+            }
+        }
 
     }
 

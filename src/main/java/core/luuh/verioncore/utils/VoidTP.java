@@ -12,14 +12,17 @@ public class VoidTP implements Listener {
 
     public VoidTP(VerionCore plugin) {this.plugin = plugin;}
 
+    private static GeneralUtils settings = GeneralUtils.getInstance();
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
-        if(e.getEntity() instanceof Player) {
-            if (e.getCause() == EntityDamageEvent.DamageCause.VOID){
-                e.setCancelled(true);
-                Player p = (Player) e.getEntity();
-                p.teleport(plugin.getConfig().getLocation("spawn.loc"));
+        if(settings.getBooleanFromConfig("VOIDTP")) {
+            if (e.getEntity() instanceof Player) {
+                if (e.getCause() == EntityDamageEvent.DamageCause.VOID) {
+                    e.setCancelled(true);
+                    Player p = (Player) e.getEntity();
+                    p.teleport(plugin.getConfig().getLocation("spawn.loc"));
 
+                }
             }
         }
     }

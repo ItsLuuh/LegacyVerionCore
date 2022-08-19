@@ -1,6 +1,7 @@
 package core.luuh.verioncore.gamemode;
 
 import core.luuh.verioncore.VerionCore;
+import core.luuh.verioncore.utils.GeneralUtils;
 import core.luuh.verioncore.utils.chatcolor;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
@@ -14,7 +15,7 @@ public class GamemodeSpectator implements CommandExecutor {
     private final VerionCore plugin;
 
     public GamemodeSpectator(VerionCore plugin) {this.plugin = plugin;}
-
+    private static GeneralUtils settings = GeneralUtils.getInstance();
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
@@ -29,17 +30,17 @@ public class GamemodeSpectator implements CommandExecutor {
                         Player target = plugin.getServer().getPlayer(args[0]);
                         if (target != null) {
                             target.setGameMode(GameMode.SPECTATOR);
-                            player.sendMessage(chatcolor.chat(prefix + "Hai impostato la gamemode di " + target.getDisplayName() + " a &eSPETTATORE&f."));
-                            target.sendMessage(chatcolor.chat(prefix + "La tua gamemode è stata impostata a &eSPETTATORE&f."));
+                            player.sendMessage(chatcolor.chat(settings.getFromConfig("MSG_STEC_GM_SP", target)));
+                            target.sendMessage(chatcolor.chat(settings.getFromConfig("MSG_STN_GM_SP", player)));
                         } else {
-                            player.sendMessage(chatcolor.chat(prefix + "Devi impostare un nome valido."));
+                            player.sendMessage(chatcolor.chat(settings.getCaseFromConfig(3)));
                         }
                     } else {
                         player.setGameMode(GameMode.SPECTATOR);
-                        player.sendMessage(chatcolor.chat(prefix + "Hai impostato la tua gamemode a &eSPETTATORE&f."));
+                        player.sendMessage(chatcolor.chat(settings.getFromConfig("MSG_GM_SP",player)));
                     }
                 } else {
-                    player.sendMessage(chatcolor.chat(prefix + "Non hai il permesso per eseguire questo comando."));
+                    player.sendMessage(chatcolor.chat(settings.getCaseFromConfig(1)));
                 }
             }
         } else {

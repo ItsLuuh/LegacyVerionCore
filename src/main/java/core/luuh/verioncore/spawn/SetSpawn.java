@@ -1,6 +1,7 @@
 package core.luuh.verioncore.spawn;
 
 import core.luuh.verioncore.VerionCore;
+import core.luuh.verioncore.utils.GeneralUtils;
 import core.luuh.verioncore.utils.chatcolor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,6 +14,8 @@ public class SetSpawn implements CommandExecutor {
     private final VerionCore plugin;
 
     public SetSpawn(VerionCore plugin) {this.plugin = plugin;}
+
+    private static GeneralUtils settings = GeneralUtils.getInstance();
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -27,9 +30,9 @@ public class SetSpawn implements CommandExecutor {
                     player.getWorld().setSpawnLocation(player.getLocation());
                     plugin.getConfig().set("spawn.loc", player.getLocation());
                     plugin.saveConfig();
-                    player.sendMessage(chatcolor.chat(prefix + "Hai impostato la posizione dello &espawn&f."));
+                    player.sendMessage(chatcolor.chat(settings.getFromConfig("MSG_SETSPAWN",null)));
                 } else {
-                    player.sendMessage(chatcolor.chat(prefix+"Non hai il permesso per eseguire questo comando."));
+                    player.sendMessage(chatcolor.chat(settings.getCaseFromConfig(1)));
                 }
             }
 

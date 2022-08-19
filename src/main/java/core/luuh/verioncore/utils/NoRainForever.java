@@ -9,10 +9,14 @@ public class NoRainForever implements Listener {
 
     private final VerionCore plugin;
 
+    private static GeneralUtils settings = GeneralUtils.getInstance();
+
     public NoRainForever(VerionCore plugin) {this.plugin = plugin;}
 
     @EventHandler
     public void onRainEvent(WeatherChangeEvent e){
-        e.setCancelled(e.toWeatherState());
+        if(settings.getBooleanFromConfig("REMOVE_RAIN")) {
+            e.setCancelled(e.toWeatherState());
+        }
     }
 }

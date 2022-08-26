@@ -37,7 +37,7 @@ public class JoinTPSpawn implements Listener {
             String st = chatcolor.chat(chatcolor.hex(settings.getFromConfigS("spawn.title.join-subtitle-msg")));
 
             //PlaceholderAPI.setPlaceholders(e.getPlayer(), t),PlaceholderAPI.setPlaceholders(e.getPlayer(), st)
-            player.sendTitle("t","w", Integer.parseInt(settings.getFromConfigS("spawn.title.fadeIn")), Integer.parseInt(settings.getFromConfigS("spawn.title.stay")), Integer.parseInt(settings.getFromConfigS("spawn.title.fadeOut")));
+            player.sendTitle(PlaceholderAPI.setPlaceholders(e.getPlayer(), t),PlaceholderAPI.setPlaceholders(e.getPlayer(), st), Integer.parseInt(settings.getFromConfigS("spawn.title.fadeIn")), Integer.parseInt(settings.getFromConfigS("spawn.title.stay")), Integer.parseInt(settings.getFromConfigS("spawn.title.fadeOut")));
         }
     }
 

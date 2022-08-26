@@ -55,6 +55,7 @@ public final class VerionCore extends JavaPlugin {
         getConfig().addDefault("VOIDTP", true);
         getConfig().addDefault("REMOVE_RAIN", true);
         getConfig().addDefault("REMOVE_DAMAGE", true);
+        getConfig().addDefault("REMOVE_FOOD", true);
 
         getConfig().addDefault("MSG_CORE_HELP", "");
 
@@ -100,6 +101,7 @@ public final class VerionCore extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new VoidTP(this), this);
         Bukkit.getPluginManager().registerEvents(new NoRainForever(this), this);
         Bukkit.getPluginManager().registerEvents(new NoDamageForever(this), this);
+        Bukkit.getPluginManager().registerEvents(new NoFoodChange(this), this);
         Bukkit.getPluginManager().registerEvents(new JoinTPSpawn(this), this);
 
     }

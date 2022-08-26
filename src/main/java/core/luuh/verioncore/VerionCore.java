@@ -8,6 +8,8 @@ import core.luuh.verioncore.spawn.JoinTPSpawn;
 import core.luuh.verioncore.spawn.SetSpawn;
 import core.luuh.verioncore.spawn.SpawnCommand;
 import core.luuh.verioncore.speed.SetSpeedCommand;
+import core.luuh.verioncore.status.feedCommand;
+import core.luuh.verioncore.status.healCommand;
 import core.luuh.verioncore.utils.*;
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.Bukkit;
@@ -118,6 +120,8 @@ public final class VerionCore extends JavaPlugin {
         getCommand("gma").setExecutor(new GamemodeAdventure(this));
         getCommand("gmsp").setExecutor(new GamemodeSpectator(this));
         getCommand("speed").setExecutor(new SetSpeedCommand(this));
+        getCommand("feed").setExecutor(new feedCommand(this));
+        getCommand("heal").setExecutor(new healCommand(this));
     }
 
     public void registerAll(){

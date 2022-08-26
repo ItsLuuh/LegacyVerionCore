@@ -48,3 +48,7 @@ commands:
     description: Teletrasporto allo spawn del server
   speed:
     description: Imposta la velocità del tuo movimento
+  feed:
+    description: Fulla il cibo del player
+  heal:
+    description: Fulla la vita del player

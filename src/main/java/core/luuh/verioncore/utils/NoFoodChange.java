@@ -9,6 +9,8 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.List;
+
 public class NoFoodChange implements Listener {
 
     private final VerionCore plugin;
@@ -19,9 +21,17 @@ public class NoFoodChange implements Listener {
 
     @EventHandler
     public void foodChange(FoodLevelChangeEvent e){
-        boolean foodchange = plugin.getConfig().getBoolean("REMOVE_FOOD");
-        if(foodchange){
-            e.setCancelled(true);
+        if(settings.getBooleanFromConfig("REMOVE_FOOD.enabled")) {
+            if (settings.getBooleanFromConfig("REMOVE_FOOD.every-world")) {
+                e.setCancelled(true);
+            } else {
+                List<String> worlds = plugin.getConfig().getStringList("REMOVE_FODD.worlds");
+                for (String world : worlds) {
+                    if (e.getEntity().getWorld().getName().equals(world)) {
+                        e.setCancelled(true);
+                    }
+                }
+            }
         }
     }
 

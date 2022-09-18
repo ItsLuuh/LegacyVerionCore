@@ -2,6 +2,7 @@ package core.luuh.verioncore;
 
 import core.luuh.verioncore.utils.GeneralUtils;
 import core.luuh.verioncore.utils.chatcolor;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -26,22 +27,21 @@ public class CoreCommand implements CommandExecutor {
             Player player = (Player) sender;
             String versione = plugin.getDescription().getVersion();
 
-            sender.sendMessage("");
-
             if (args.length > 0) {
 
                 if (player.hasPermission("*")) {
 
                     if (args[0].equalsIgnoreCase("reload")) {
                         plugin.reloadConfig();
+                        sender.sendMessage("");
                         sender.sendMessage(chatcolor.chat("&6[&e!&6] &lVERION&r &fCore &ov" + versione + " &6[&e!&6]"));
                         sender.sendMessage(chatcolor.chat(settings.getCaseFromConfig(5)));
 
                     } else if (args[0].equalsIgnoreCase("help")) {
 
-                        List<String> messaggi = plugin.getConfig().getStringList("MSG_CORE_HELP");
-                        for (String message : messaggi) {
-                            player.sendMessage(message);
+                        List<String> messages = plugin.getConfig().getStringList("MSG_CORE_HELP");
+                        for (String message : messages) {
+                            player.sendMessage(chatcolor.chat(chatcolor.hex(PlaceholderAPI.setPlaceholders(player, message.replaceAll("%prefix%", plugin.getConfig().getString("prefix"))))));
                         }
 
                     } else {
@@ -49,11 +49,13 @@ public class CoreCommand implements CommandExecutor {
                     }
 
                 } else {
+                    sender.sendMessage("");
                     sender.sendMessage(chatcolor.chat("&6[&e!&6] &lVERION&r &fCore &ov" + versione + " &6[&e!&6]"));
                     sender.sendMessage(chatcolor.chat("&fBy ItsLuuh."));
                     sender.sendMessage("");
                 }
             } else {
+                sender.sendMessage("");
                 sender.sendMessage(chatcolor.chat("&6[&e!&6] &lVERION&r &fCore &ov" + versione + " &6[&e!&6]"));
                 sender.sendMessage(chatcolor.chat("&fBy ItsLuuh."));
                 sender.sendMessage("");

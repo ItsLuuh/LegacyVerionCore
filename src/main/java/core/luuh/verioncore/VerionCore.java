@@ -16,6 +16,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
+
 public final class VerionCore extends JavaPlugin {
 
     static VerionCore instance;
@@ -46,7 +48,15 @@ public final class VerionCore extends JavaPlugin {
         getConfig().addDefault("joins", 0);
         getConfig().addDefault("joinmessage", "%prefix% Benvenuto &e%player%&f su &6&lVERIONMC&f! &8(&e#%joins%&8)");
         getConfig().addDefault("spawn.join-tp-spawn", true);
-        getConfig().addDefault("spawn.title.join-title", true);
+        getConfig().addDefault("spawn.on-join-message.enabled", true);
+
+        ArrayList<String> listmex = new ArrayList<String>();
+        listmex.add("");
+        listmex.add("Buongiorno");
+        listmex.add("");
+
+        getConfig().addDefault("spawn.on-join-message.message", listmex);
+        getConfig().addDefault("spawn.title.enabled", true);
         getConfig().addDefault("spawn.title.join-title-msg", "&6&lVERION&e&lMC");
         getConfig().addDefault("spawn.title.join-subtitle-msg", "&fBenvenuto!");
         getConfig().addDefault("spawn.title.fadeIn", 20);
@@ -54,12 +64,27 @@ public final class VerionCore extends JavaPlugin {
         getConfig().addDefault("spawn.title.fadeOut", 20);
         getConfig().addDefault("chat", "%vault_prefix% &f%player_name% &8» &f%message%");
 
-        getConfig().addDefault("VOIDTP", true);
-        getConfig().addDefault("REMOVE_RAIN", true);
-        getConfig().addDefault("REMOVE_DAMAGE", true);
-        getConfig().addDefault("REMOVE_FOOD", true);
+        ArrayList<String> list1 = new ArrayList<String>();
+        list1.add("world");
+        getConfig().addDefault("VOIDTP.enabled", true);
+        getConfig().addDefault("VOIDTP.every-world", false);
+        getConfig().addDefault("VOIDTP.worlds", list1);
 
-        getConfig().addDefault("MSG_CORE_HELP", "");
+        getConfig().addDefault("REMOVE_RAIN.enabled", true);
+        getConfig().addDefault("REMOVE_RAIN.every-world", false);
+        getConfig().addDefault("REMOVE_RAIN.worlds", list1);
+
+        getConfig().addDefault("REMOVE_DAMAGE.enabled", true);
+        getConfig().addDefault("REMOVE_DAMAGE.every-world", false);
+        getConfig().addDefault("REMOVE_DAMAGE.worlds", list1);
+
+        getConfig().addDefault("REMOVE_FOOD.enabled", true);
+        getConfig().addDefault("REMOVE_FOOD.every-world", false);
+        getConfig().addDefault("REMOVE_FOOD.worlds", list1);
+
+        ArrayList<String> list2 = new ArrayList<String>();
+        list2.add("%prefix% text");
+        getConfig().addDefault("MSG_CORE_HELP", list2);
 
         getConfig().addDefault("QUIT_MSG", "&8[&c-&8] &7%player%");
         getConfig().addDefault("JOIN_MSG", "&8[&a+&8] &7%player%");

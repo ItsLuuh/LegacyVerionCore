@@ -10,6 +10,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.List;
+
 public class JoinTPSpawn implements Listener {
 
     private final VerionCore plugin;
@@ -21,7 +23,7 @@ public class JoinTPSpawn implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e){
         Player player = e.getPlayer();
-        boolean jointpspawn = plugin.getConfig().getBoolean("spawn.join-tp-spawn");
+        boolean jointpspawn = settings.getBooleanFromConfig("spawn.join-tp-spawn");
         if(jointpspawn){
             new BukkitRunnable() {
                 @Override
@@ -30,13 +32,19 @@ public class JoinTPSpawn implements Listener {
                 }
             }.runTaskLater(plugin, 2L);
         }
-        boolean titles = plugin.getConfig().getBoolean("spawn.title.join-title");
+        boolean onjoinmessage = settings.getBooleanFromConfig("spawn.on-join-message.enabled");
+        if(onjoinmessage) {
+            List<String> messages = plugin.getConfig().getStringList("spawn.on-join-message.message");
+            for (String message : messages) {
+                player.sendMessage(chatcolor.chat(chatcolor.hex(PlaceholderAPI.setPlaceholders(e.getPlayer(), message.replaceAll("%prefix%", plugin.getConfig().getString("prefix"))))));
+            }
+        }
+
+        boolean titles = settings.getBooleanFromConfig("spawn.title.enabled");
         if(titles) {
-            player.sendMessage("TWEWEADWADS");
             String t = chatcolor.chat(chatcolor.hex(settings.getFromConfigS("spawn.title.join-title-msg")));
             String st = chatcolor.chat(chatcolor.hex(settings.getFromConfigS("spawn.title.join-subtitle-msg")));
 
-            //PlaceholderAPI.setPlaceholders(e.getPlayer(), t),PlaceholderAPI.setPlaceholders(e.getPlayer(), st)
             player.sendTitle(PlaceholderAPI.setPlaceholders(e.getPlayer(), t),PlaceholderAPI.setPlaceholders(e.getPlayer(), st), Integer.parseInt(settings.getFromConfigS("spawn.title.fadeIn")), Integer.parseInt(settings.getFromConfigS("spawn.title.stay")), Integer.parseInt(settings.getFromConfigS("spawn.title.fadeOut")));
         }
     }

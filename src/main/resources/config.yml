@@ -1,0 +1,76 @@
+prefix: '&6[&e!&6] &lVERION &8» &f'
+joins: 0
+joinmessage: '%prefix% Benvenuto &e%player%&f su &6&lVERIONMC&f! &8(&e#%joins%&8)'
+chat: '%vault_prefix% &f%player_name% &8» &f%message%'
+VOIDTP:
+  enabled: true
+  every-world: true
+  worlds:
+    - Spawn
+REMOVE_RAIN:
+  enabled: true
+  every-world: false
+  worlds:
+    - Spawn
+REMOVE_DAMAGE:
+  enabled: true
+  every-world: false
+  worlds:
+    - Spawn
+REMOVE_FOOD:
+  enabled: true
+  every-world: false
+  worlds:
+    - Spawn
+REMOVE_PHANTOMS:
+  enabled: true
+  every-world: true
+  worlds:
+    - Spawn
+MSG_CORE_HELP:
+  - '%prefix% text'
+QUIT_MSG: '&8[&c-&8] &7%player%'
+JOIN_MSG: '&8[&a+&8] &7%player%'
+NO_PERMS: '%prefix%Non hai abbastanza permessi per eseguire questo comando.'
+NO_ARGS: '%prefix%Devi inserire un argomento.'
+INVALID_PLAYER: '%prefix%Devi inserire un player valido.'
+INVALID_ARGS: '%prefix%Devi inserire un argomento valido.'
+PLUGIN_RELOADED: '%prefix%Tutti i config reloaddati con successo.'
+MSG_FLY_SPEED: '%prefix%Hai impostato la tua &evelocità di volo&f a &e%arg%&f.'
+MSG_WALK_SPEED: '%prefix%Hai impostato la tua &evelocità di camminata&f a &e%arg%&f.'
+MSG_SETSPAWN: '%prefix%Hai impostato lo &espawn&f.'
+MSG_STEC_GM_S: '%prefix%Hai impostato la &emodalità di gioco&f di &e%player%&f a &eSURVIVAL.'
+MSG_STN_GM_S: '%prefix%La tua &emodalità di gioco&f è stata impostata a &eSURVIVAL.'
+MSG_GM_S: '%prefix%Hai impostato la tua &emodalità di gioco&f a &eSURVIVAL.'
+MSG_STEC_GM_SP: '%prefix%Hai impostato la &emodalità di gioco&f di &e%player%&f a
+  &eSPECTATOR.'
+MSG_STN_GM_SP: '%prefix%La tua &emodalità di gioco&f è stata impostata a &eSPECTATOR.'
+MSG_GM_SP: '%prefix%Hai impostato la tua &emodalità di gioco&f a &eSPECTATOR.'
+MSG_STEC_GM_C: '%prefix%Hai impostato la &emodalità di gioco&f di &e%player%&f a &eCREATIVE.'
+MSG_STN_GM_C: '%prefix%La tua &emodalità di gioco&f è stata impostata a &eCREATIVE.'
+MSG_GM_C: '%prefix%Hai impostato la tua &emodalità di gioco&f a &eCREATIVE.'
+MSG_STEC_GM_A: '%prefix%Hai impostato la &emodalità di gioco&f di &e%player%&f a &eADVENTURE.'
+MSG_STN_GM_A: '%prefix%La tua &emodalità di gioco&f è stata impostata a &eADVENTURE.'
+MSG_GM_A: '%prefix%Hai impostato la tua &emodalità di gioco&f a &eADVENTURE.'
+MSG_FLY_OFF: '%prefix%Hai impostato la tua &emodalità di volo&f a &cOFF&f.'
+MSG_FLY_ON: '%prefix%Hai impostato la tua &emodalità di volo&f a &aON&f.'
+MSG_STEC_FLY_OFF: '%prefix%Hai impostato la &emodalità di volo&f di &e%player%&f a
+  &aON&f.'
+MSG_STN_FLY_OFF: '%prefix%La tua &emodalità di volo&f è stata impostata a &aON&f.'
+MSG_WARP_SET: '%prefix%Hai impostato il warp.'
+MSG_WARP_TP: '%prefix%Ti sei teletrasportato al warp.'
+spawn:
+  join-tp-spawn: true
+  on-join-message:
+    enabled: true
+    message:
+      - ''
+      - Buongiorno
+      - ''
+  title:
+    enabled: true
+    join-title-msg: '&6&lVERION&e&lMC'
+    join-subtitle-msg: '&fBenvenuto!'
+    fadeIn: 20
+    stay: 280
+    fadeOut: 20

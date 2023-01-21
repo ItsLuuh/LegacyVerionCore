@@ -1,7 +1,7 @@
 name: VerionCore
 version: '${project.version}'
 main: core.luuh.verioncore.VerionCore
-api-version: 1.18
+api-version: 1.19
 authors: [ ItsLuuh ]
 description: Based Core Essential
 depend:
@@ -52,3 +52,7 @@ commands:
     description: Fulla il cibo del player
   heal:
     description: Fulla la vita del player
+  setwarp:
+    description: Imposta un warp
+  warp:
+    description: Teletrasporto al warp specifico

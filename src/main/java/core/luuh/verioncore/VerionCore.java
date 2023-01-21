@@ -11,6 +11,8 @@ import core.luuh.verioncore.speed.SetSpeedCommand;
 import core.luuh.verioncore.status.feedCommand;
 import core.luuh.verioncore.status.healCommand;
 import core.luuh.verioncore.utils.*;
+import core.luuh.verioncore.warp.SetWarpCommand;
+import core.luuh.verioncore.warp.WarpCommand;
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -130,6 +132,7 @@ public final class VerionCore extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new NoDamageForever(this), this);
         Bukkit.getPluginManager().registerEvents(new NoFoodChange(this), this);
         Bukkit.getPluginManager().registerEvents(new JoinTPSpawn(this), this);
+        Bukkit.getPluginManager().registerEvents(new PhantomSpawning(this), this);
 
     }
 
@@ -147,6 +150,8 @@ public final class VerionCore extends JavaPlugin {
         getCommand("speed").setExecutor(new SetSpeedCommand(this));
         getCommand("feed").setExecutor(new feedCommand(this));
         getCommand("heal").setExecutor(new healCommand(this));
+        getCommand("setwarp").setExecutor(new SetWarpCommand(this));
+        getCommand("warp").setExecutor(new WarpCommand(this));
     }
 
     public void registerAll(){
@@ -160,9 +165,9 @@ public final class VerionCore extends JavaPlugin {
 
         registerEvents();
         registerCommands();
-        registerDefaults();
+
         setupChat();
-        getConfig().options().copyDefaults(true);
+        getConfig().options().copyDefaults();
         saveConfig();
         saveDefaultConfig();
 

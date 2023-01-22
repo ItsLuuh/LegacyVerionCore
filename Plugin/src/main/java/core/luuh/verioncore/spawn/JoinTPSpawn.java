@@ -32,21 +32,6 @@ public class JoinTPSpawn implements Listener {
                 }
             }.runTaskLater(plugin, 2L);
         }
-        boolean onjoinmessage = settings.getBooleanFromConfig("spawn.on-join-message.enabled");
-        if(onjoinmessage) {
-            List<String> messages = plugin.getConfig().getStringList("spawn.on-join-message.message");
-            for (String message : messages) {
-                player.sendMessage(chatcolor.chat(chatcolor.hex(PlaceholderAPI.setPlaceholders(e.getPlayer(), message.replaceAll("%prefix%", plugin.getConfig().getString("prefix"))))));
-            }
-        }
-
-        boolean titles = settings.getBooleanFromConfig("spawn.title.enabled");
-        if(titles) {
-            String t = chatcolor.chat(chatcolor.hex(settings.getFromConfigS("spawn.title.join-title-msg")));
-            String st = chatcolor.chat(chatcolor.hex(settings.getFromConfigS("spawn.title.join-subtitle-msg")));
-
-            player.sendTitle(PlaceholderAPI.setPlaceholders(e.getPlayer(), t),PlaceholderAPI.setPlaceholders(e.getPlayer(), st), Integer.parseInt(settings.getFromConfigS("spawn.title.fadeIn")), Integer.parseInt(settings.getFromConfigS("spawn.title.stay")), Integer.parseInt(settings.getFromConfigS("spawn.title.fadeOut")));
-        }
     }
 
 }

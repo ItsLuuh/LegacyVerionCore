@@ -11,7 +11,7 @@ import java.util.List;
 
 public class PhantomSpawning implements Listener {
     private final VerionCore plugin;
-    private static GeneralUtils settings;
+    private static GeneralUtils settings = GeneralUtils.getInstance();
 
     public PhantomSpawning(final VerionCore plugin) {
         this.plugin = plugin;
@@ -23,10 +23,9 @@ public class PhantomSpawning implements Listener {
         if (entity.getType() == EntityType.PHANTOM && settings.getBooleanFromConfig("REMOVE_PHANTOMS.enabled")) {
             if (settings.getBooleanFromConfig("REMOVE_PHANTOMS.every-world")) {
                 e.setCancelled(true);
-            }
-            else {
-                final List<String> worlds = (List<String>)this.plugin.getConfig().getStringList("REMOVE_PHANTOMS.worlds");
-                for (final String world : worlds) {
+            } else {
+                List<String> worlds = this.plugin.getConfig().getStringList("REMOVE_PHANTOMS.worlds");
+                for (String world : worlds) {
                     if (e.getEntity().getWorld().getName().equals(world)) {
                         e.setCancelled(true);
                     }

@@ -3,55 +3,43 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>core.luuh</groupId>
-    <artifactId>VerionCore</artifactId>
-    <version>2.0-BERLINO</version>
-    <packaging>jar</packaging>
-
-    <name>VerionCore</name>
-
-    <description>Based Core Essential</description>
+    <artifactId>verioncore-parent</artifactId>
+    <!-- Artifact ID doesn't matter for anything but the final product
+         At least, it doesn't matter externally to this setup -->
+    <packaging>pom</packaging>
+    <!-- Packaging? POM -->
+    <version>parent</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.github.MilkBowl</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.7</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.18.2-R0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+    <!-- I keep my versions of the internal projects static, so I don't have to rename them all the time. -->
+    <name>VerionCore Parent</name>
     <properties>
-        <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <createDependencyReducedPom>false</createDependencyReducedPom>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-    </build>
+    <modules>
+        <module>API</module>
+        <module>v1_16_R3</module>
+        <module>v1_18_R2</module>
+        <module>v1_19_R1</module>
+        <module>v1_19_R2</module>
+        <module>Plugin</module>
+    </modules>
 
     <repositories>
         <repository>
@@ -76,34 +64,4 @@
         </repository>
     </repositories>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.16.5-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>23.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.MilkBowl</groupId>
-            <artifactId>VaultAPI</artifactId>
-            <version>1.7</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>me.clip</groupId>
-            <artifactId>placeholderapi</artifactId>
-            <version>2.11.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.kyori</groupId>
-            <artifactId>adventure-text-minimessage</artifactId>
-            <version>4.11.0</version>
-        </dependency>
-    </dependencies>
 </project>

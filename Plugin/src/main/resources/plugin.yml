@@ -56,3 +56,5 @@ commands:
     description: Imposta un warp
   warp:
     description: Teletrasporto al warp specifico
+  help:
+    description: Ottieni aiuto tramite la lista di comandi

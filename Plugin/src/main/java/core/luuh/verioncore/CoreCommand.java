@@ -37,13 +37,6 @@ public class CoreCommand implements CommandExecutor {
                         sender.sendMessage(chatcolor.chat("&6[&e!&6] &lVERION&r &fCore &ov" + versione + " &6[&e!&6]"));
                         sender.sendMessage(chatcolor.chat(settings.getCaseFromConfig(5)));
 
-                    } else if (args[0].equalsIgnoreCase("help")) {
-
-                        List<String> messages = plugin.getConfig().getStringList("MSG_CORE_HELP");
-                        for (String message : messages) {
-                            player.sendMessage(chatcolor.chat(chatcolor.hex(PlaceholderAPI.setPlaceholders(player, message.replaceAll("%prefix%", plugin.getConfig().getString("prefix"))))));
-                        }
-
                     } else {
                         sender.sendMessage(chatcolor.chat(settings.getCaseFromConfig(1)));
                     }

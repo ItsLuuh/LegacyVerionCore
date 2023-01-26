@@ -68,8 +68,11 @@ public class GeneralUtils {
         }
     }
 
+
+
     public boolean getBooleanFromConfig(String s){
         return plugin.getConfig().getBoolean(s);
     }
+
 
 }

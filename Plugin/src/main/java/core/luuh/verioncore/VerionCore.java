@@ -171,6 +171,7 @@ public final class VerionCore extends JavaPlugin {
     public void registerCommands(){
 
         getCommand("core").setExecutor(new CoreCommand(this));
+        getCommand("help").setExecutor(new HelpCommand(this));
         getCommand("fly").setExecutor(new FlyCommand(this));
         getCommand("setspawn").setExecutor(new SetSpawn(this));
         getCommand("spawn").setExecutor(new SpawnCommand(this));
@@ -195,14 +196,14 @@ public final class VerionCore extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+
         registerNMS();
         registerEvents();
         registerCommands();
 
         setupChat();
-        getConfig().options().copyDefaults();
-        saveConfig();
-        saveDefaultConfig();
 
     }
 

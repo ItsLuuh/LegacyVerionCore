@@ -58,3 +58,7 @@ commands:
     description: Teletrasporto al warp specifico
   help:
     description: Ottieni aiuto tramite la lista di comandi
+  chatcolor:
+    description: Imposta il colore della tua chat
+  nickcolor:
+    description: Imposta il colore del tuo nome

@@ -1,5 +1,6 @@
 package core.luuh.verioncore;
 
+import core.luuh.verioncore.utils.SettingsManager;
 import core.luuh.verioncore.utils.chatcolor;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.command.Command;
@@ -18,6 +19,7 @@ public class CoreCommand implements CommandExecutor {
     public CoreCommand(VerionCore plugin) {this.plugin = plugin;}
 
     private static GeneralUtils settings = GeneralUtils.getInstance();
+    private final SettingsManager settingsm = SettingsManager.getInstance();
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -33,6 +35,7 @@ public class CoreCommand implements CommandExecutor {
 
                     if (args[0].equalsIgnoreCase("reload")) {
                         plugin.reloadConfig();
+                        settingsm.reloadData();
                         sender.sendMessage("");
                         sender.sendMessage(chatcolor.chat("&6[&e!&6] &lVERION&r &fCore &ov" + versione + " &6[&e!&6]"));
                         sender.sendMessage(chatcolor.chat(settings.getCaseFromConfig(5)));

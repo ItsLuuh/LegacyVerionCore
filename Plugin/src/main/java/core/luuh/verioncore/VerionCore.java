@@ -1,5 +1,7 @@
 package core.luuh.verioncore;
 
+import core.luuh.verioncore.chatcolor.chatnickcolorCommand;
+import core.luuh.verioncore.chatcolor.colorGUIEvent;
 import core.luuh.verioncore.fly.FlyCommand;
 import core.luuh.verioncore.gamemode.*;
 import core.luuh.verioncore.join.JoinMessageEvent;
@@ -20,8 +22,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-import core.luuh.verioncore.gamemode.*;
-import core.luuh.verioncore.utils.*;
 
 import java.util.ArrayList;
 
@@ -51,6 +51,8 @@ public final class VerionCore extends JavaPlugin {
         chat = rsp.getProvider();
         return chat != null;
     }
+
+    private final SettingsManager settings = SettingsManager.getInstance();
 
     public void registerDefaults(){
         getConfig().addDefault("prefix", "&6[&e!&6] &lVERION &8» &f");
@@ -165,6 +167,7 @@ public final class VerionCore extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new NoFoodChange(this), this);
         Bukkit.getPluginManager().registerEvents(new JoinTPSpawn(this), this);
         Bukkit.getPluginManager().registerEvents(new PhantomSpawning(this), this);
+        Bukkit.getPluginManager().registerEvents(new colorGUIEvent(this), this);
 
     }
 
@@ -185,6 +188,8 @@ public final class VerionCore extends JavaPlugin {
         getCommand("heal").setExecutor(new healCommand(this));
         getCommand("setwarp").setExecutor(new SetWarpCommand(this));
         getCommand("warp").setExecutor(new WarpCommand(this));
+        getCommand("chatcolor").setExecutor(new chatnickcolorCommand(this));
+        getCommand("nickcolor").setExecutor(new chatnickcolorCommand(this));
     }
 
     public void registerAll(){
@@ -198,6 +203,8 @@ public final class VerionCore extends JavaPlugin {
 
         getConfig().options().copyDefaults();
         saveDefaultConfig();
+        settings.setup(this);
+
 
         registerNMS();
         registerEvents();
@@ -225,6 +232,7 @@ public final class VerionCore extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        settings.saveData();
         logConsole(chatcolor.chat(chatcolor.hex("#D60000[#FF0000!#D60000]&r &6Verion-CORE&r " + versionplugin + "&r &f»&r #C83838DISABLED!&r")));
     }
 

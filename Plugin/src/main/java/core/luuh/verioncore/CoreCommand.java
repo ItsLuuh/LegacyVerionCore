@@ -44,7 +44,10 @@ public class CoreCommand implements CommandExecutor, TabCompleter {
                         sender.sendMessage(chatcolor.chat(settings.getCaseFromConfig(5)));
 
                     } else {
-                        sender.sendMessage(chatcolor.chat(settings.getCaseFromConfig(1)));
+                        sender.sendMessage("");
+                        sender.sendMessage(chatcolor.chat("&6[&e!&6] &lVERION&r &fCore &ov" + versione + " &6[&e!&6]"));
+                        sender.sendMessage(chatcolor.chat("&fBy ItsLuuh."));
+                        sender.sendMessage("");
                     }
 
                 } else {
@@ -70,7 +73,7 @@ public class CoreCommand implements CommandExecutor, TabCompleter {
 
         if(args.length == 1){
             List<String> arguments = new ArrayList<>();
-            arguments.add("help");
+            arguments.add("reload");
             return arguments;
 
         }

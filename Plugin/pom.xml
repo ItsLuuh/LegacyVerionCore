@@ -112,7 +112,7 @@
 
     <build>
         <directory>../target</directory> <!-- Build it one level up, because it is the one we care about -->
-        <finalName>VerionCORE-4.0-BUDAPEST</finalName>
+        <finalName>VerionCORE-4.5-BUDAPEST</finalName>
         <!-- Define filtering for the inclusion of plugin.yml, so we can utilize the pom.xml version in it -->
         <resources>
             <resource>

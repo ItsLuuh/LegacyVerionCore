@@ -168,6 +168,7 @@ public final class VerionCore extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new JoinTPSpawn(this), this);
         Bukkit.getPluginManager().registerEvents(new PhantomSpawning(this), this);
         Bukkit.getPluginManager().registerEvents(new colorGUIEvent(this), this);
+        Bukkit.getPluginManager().registerEvents(new ItemsCommand(this), this);
 
     }
 

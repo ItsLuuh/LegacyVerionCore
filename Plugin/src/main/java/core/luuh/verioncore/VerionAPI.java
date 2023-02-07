@@ -1,11 +1,13 @@
 package core.luuh.verioncore;
 
+import core.luuh.verioncore.speed.SetSpeedCommand;
 import core.luuh.verioncore.utils.GeneralUtils;
 import core.luuh.verioncore.utils.SettingsManager;
 import core.luuh.verioncore.utils.chatcolor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;

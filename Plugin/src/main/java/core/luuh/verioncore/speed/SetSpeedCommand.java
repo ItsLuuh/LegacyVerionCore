@@ -4,12 +4,17 @@ import core.luuh.verioncore.utils.chatcolor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import core.luuh.verioncore.VerionCore;
 import core.luuh.verioncore.utils.GeneralUtils;
+import org.jetbrains.annotations.Nullable;
 
-public class SetSpeedCommand implements CommandExecutor {
+import java.util.ArrayList;
+import java.util.List;
+
+public class SetSpeedCommand implements CommandExecutor, TabCompleter {
 
     private final VerionCore plugin;
 
@@ -57,5 +62,19 @@ public class SetSpeedCommand implements CommandExecutor {
         }
 
         return true;
+    }
+
+    @Nullable
+    @Override
+    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+
+        if(args.length == 1){
+            List<String> arguments = new ArrayList<>();
+            arguments.add("1");arguments.add("2");arguments.add("3");arguments.add("4");arguments.add("5");arguments.add("6");arguments.add("7");arguments.add("8");arguments.add("9");arguments.add("10");
+            return arguments;
+
+        }
+
+        return null;
     }
 }

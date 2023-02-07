@@ -5,12 +5,17 @@ import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import core.luuh.verioncore.VerionCore;
 import core.luuh.verioncore.utils.GeneralUtils;
+import org.jetbrains.annotations.Nullable;
 
-public class Gamemode implements CommandExecutor {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Gamemode implements CommandExecutor, TabCompleter {
 
     private final VerionCore plugin;
 
@@ -102,5 +107,33 @@ public class Gamemode implements CommandExecutor {
         }
 
         return true;
+    }
+
+    @Nullable
+    @Override
+    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+
+        if(args.length == 1){
+            List<String> arguments = new ArrayList<>();
+            arguments.add("creative");
+            arguments.add("c");
+            arguments.add("1");
+
+            arguments.add("survival");
+            arguments.add("s");
+            arguments.add("0");
+
+            arguments.add("spectator");
+            arguments.add("sp");
+            arguments.add("3");
+
+            arguments.add("adventure");
+            arguments.add("a");
+            arguments.add("2");
+            return arguments;
+
+        }
+
+        return null;
     }
 }

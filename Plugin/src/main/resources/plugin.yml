@@ -53,7 +53,9 @@ commands:
   heal:
     description: Fulla la vita del player
   setwarp:
-    description: Imposta un warp
+    description: Crei un warp
+  delwarp:
+    description: Rimuovi un warp
   warp:
     description: Teletrasporto al warp specifico
   help:

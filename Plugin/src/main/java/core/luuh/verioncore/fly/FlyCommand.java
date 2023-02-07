@@ -4,12 +4,17 @@ import core.luuh.verioncore.utils.chatcolor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import core.luuh.verioncore.VerionCore;
 import core.luuh.verioncore.utils.GeneralUtils;
+import org.jetbrains.annotations.Nullable;
 
-public class FlyCommand implements CommandExecutor {
+import java.util.ArrayList;
+import java.util.List;
+
+public class FlyCommand implements CommandExecutor, TabCompleter {
 
     private final VerionCore plugin;
 
@@ -68,5 +73,28 @@ public class FlyCommand implements CommandExecutor {
         }
 
         return true;
+    }
+
+    @Nullable
+    @Override
+    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+
+        if(args.length == 1){
+            List<String> arguments = new ArrayList<>();
+            arguments.add("on");arguments.add("off");
+            for( Player player : plugin.getServer().getOnlinePlayers()) {
+                arguments.add(player.getDisplayName());
+            }
+            return arguments;
+
+        } else if (args.length == 2){
+
+            List<String> arguments = new ArrayList<>();
+            arguments.add("on");arguments.add("off");
+            return arguments;
+
+        }
+
+        return null;
     }
 }

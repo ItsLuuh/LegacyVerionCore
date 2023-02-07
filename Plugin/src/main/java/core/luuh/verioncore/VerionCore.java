@@ -174,20 +174,33 @@ public final class VerionCore extends JavaPlugin {
     public void registerCommands(){
 
         getCommand("core").setExecutor(new CoreCommand(this));
+        getCommand("core").setTabCompleter(new CoreCommand(this));
+
         getCommand("help").setExecutor(new HelpCommand(this));
         getCommand("fly").setExecutor(new FlyCommand(this));
+        getCommand("fly").setTabCompleter(new FlyCommand(this));
+
         getCommand("setspawn").setExecutor(new SetSpawn(this));
         getCommand("spawn").setExecutor(new SpawnCommand(this));
         getCommand("gamemode").setExecutor(new Gamemode(this));
+        getCommand("gamemode").setTabCompleter(new Gamemode(this));
+
         getCommand("gmc").setExecutor(new GamemodeCreative(this));
         getCommand("gms").setExecutor(new GamemodeSurvival(this));
         getCommand("gma").setExecutor(new GamemodeAdventure(this));
         getCommand("gmsp").setExecutor(new GamemodeSpectator(this));
         getCommand("speed").setExecutor(new SetSpeedCommand(this));
+        getCommand("speed").setTabCompleter(new SetSpeedCommand(this));
+
         getCommand("feed").setExecutor(new feedCommand(this));
         getCommand("heal").setExecutor(new healCommand(this));
         getCommand("setwarp").setExecutor(new SetWarpCommand(this));
+        getCommand("delwarp").setExecutor(new SetWarpCommand(this));
+        getCommand("delwarp").setTabCompleter(new SetWarpCommand(this));
+
         getCommand("warp").setExecutor(new WarpCommand(this));
+        getCommand("warp").setTabCompleter(new WarpCommand(this));
+
         getCommand("chatcolor").setExecutor(new chatnickcolorCommand(this));
         getCommand("nickcolor").setExecutor(new chatnickcolorCommand(this));
     }

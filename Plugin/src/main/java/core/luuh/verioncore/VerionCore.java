@@ -34,11 +34,12 @@ public final class VerionCore extends JavaPlugin {
     public static VerionCore getInstance() {
         return instance;
     }
+    
 
     final String versionplugin = this.getDescription().getVersion();
 
     public void logConsole(String message) {
-        Bukkit.getConsoleSender().sendMessage(message);
+        Bukkit.getConsoleSender().sendMessage(chatcolor.chat(chatcolor.hex(message)));
     }
     private static Chat chat = null;
 
@@ -232,14 +233,14 @@ public final class VerionCore extends JavaPlugin {
     public void onEnable() {
         instance = this;
         registerAll();
-        logConsole(chatcolor.chat(chatcolor.hex("&a&r                                    ")));
-        logConsole(chatcolor.chat(chatcolor.hex("&b __      ________ _____  _____ ____  _   _   &f|  ")));
-        logConsole(chatcolor.chat(chatcolor.hex("&b \\ \\    / /  ____|  __ \\|_   _/ __ \\| \\ | |  &f|  &2Verion &7" + versionplugin)));
-        logConsole(chatcolor.chat(chatcolor.hex("&b  \\ \\  / /| |__  | |__) | | || |  | |  \\| |  &f|  &8Made by Verion Developing Team")));
-        logConsole(chatcolor.chat(chatcolor.hex("&b   \\ \\/ / |  __| |  _  /  | || |  | | . ` |  &f|  ")));
-        logConsole(chatcolor.chat(chatcolor.hex("&b    \\  /  | |____| | \\ \\ _| || |__| | |\\  |  &f|  ")));
-        logConsole(chatcolor.chat(chatcolor.hex("&b     \\/   |______|_|  \\_\\_____\\____/|_| \\_|  &f|  ")));
-        logConsole(chatcolor.chat(chatcolor.hex("&a&r                                    ")));
+        logConsole("&a&r                                    ");
+        logConsole("&b __      ________ _____  _____ ____  _   _   &f|  ");
+        logConsole("&b \\ \\    / /  ____|  __ \\|_   _/ __ \\| \\ | |  &f|  &2Verion &7" + versionplugin);
+        logConsole("&b  \\ \\  / /| |__  | |__) | | || |  | |  \\| |  &f|  &8Made by Verion Developing Team");
+        logConsole("&b   \\ \\/ / |  __| |  _  /  | || |  | | . ` |  &f|  ");
+        logConsole("&b    \\  /  | |____| | \\ \\ _| || |__| | |\\  |  &f|  ");
+        logConsole("&b     \\/   |______|_|  \\_\\_____\\____/|_| \\_|  &f|  ");
+        logConsole("&a&r                                    ");
         logConsole("");
 
     }
@@ -247,7 +248,7 @@ public final class VerionCore extends JavaPlugin {
     @Override
     public void onDisable() {
         settings.saveData();
-        logConsole(chatcolor.chat(chatcolor.hex("#D60000[#FF0000!#D60000]&r &6Verion-CORE&r " + versionplugin + "&r &f»&r #C83838DISABLED!&r")));
+        logConsole("#D60000[#FF0000!#D60000]&r &6Verion-CORE&r " + versionplugin + "&r &f»&r #C83838DISABLED!&r");
     }
 
     @Override

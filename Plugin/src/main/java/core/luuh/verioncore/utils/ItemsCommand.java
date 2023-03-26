@@ -1,6 +1,6 @@
 package core.luuh.verioncore.utils;
 
-import core.luuh.verioncore.VerionAPI;
+import core.luuh.verioncore.VerionAPIManager;
 import core.luuh.verioncore.VerionCore;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -50,9 +50,9 @@ public class ItemsCommand implements Listener {
         if(plugin.getConfig().getBoolean("ItemsCommand.parkour")) {
 
             Player player = e.getPlayer();
-            ItemStack itemStack = VerionAPI.createStartItem(Material.LADDER, 1);
-            VerionAPI.setItemName(itemStack, chatcolor.chat(chatcolor.hex("&6» &eParkour &6«")));
-            ItemStack finalItemStack = VerionAPI.createFinalItem(itemStack);
+            ItemStack itemStack = VerionAPIManager.createStartItem(Material.LADDER, 1);
+            VerionAPIManager.setItemName(itemStack, chatcolor.chat(chatcolor.hex("&6» &eParkour &6«")));
+            ItemStack finalItemStack = VerionAPIManager.createFinalItem(itemStack);
             player.getInventory().setItem(0, finalItemStack);
         }
     }

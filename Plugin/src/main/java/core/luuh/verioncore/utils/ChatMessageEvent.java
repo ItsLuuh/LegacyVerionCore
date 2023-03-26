@@ -19,16 +19,14 @@ import core.luuh.verioncore.VerionCore;
 
 import java.util.UUID;
 
-import static core.luuh.verioncore.VerionAPI.setChatColor;
-import static core.luuh.verioncore.VerionAPI.setNickColor;
-
 public class ChatMessageEvent implements Listener {
 
     private final VerionCore plugin;
 
     public ChatMessageEvent(VerionCore plugin) {this.plugin = plugin;}
 
-    private final SettingsManager settings = SettingsManager.getInstance();
+    private final SettingsManager settingsManager = SettingsManager.getInstance();
+    private static GeneralUtils settingsGeneral = GeneralUtils.getInstance();
 
     @EventHandler
     public void onMessageEvent(AsyncPlayerChatEvent e){
@@ -38,18 +36,18 @@ public class ChatMessageEvent implements Listener {
         String messaggio = e.getMessage();
         char nc,cc;
 
-        if(settings.getData().getString(puid+".nickcolor") != null){
-            nc = settings.getData().getString(puid+".nickcolor").charAt(0);
+        if(settingsManager.getData().getString(puid+".nickcolor") != null){
+            nc = settingsManager.getData().getString(puid+".nickcolor").charAt(0);
         } else {
-            setNickColor(ChatColor.WHITE, player);
-            nc = settings.getData().getString(puid+".nickcolor").charAt(0);
+            settingsGeneral.setNickColor(ChatColor.WHITE, player);
+            nc = settingsManager.getData().getString(puid+".nickcolor").charAt(0);
         }
 
-        if(settings.getData().getString(puid+".chatcolor") != null){
-            cc = settings.getData().getString(puid+".chatcolor").charAt(0);
+        if(settingsManager.getData().getString(puid+".chatcolor") != null){
+            cc = settingsManager.getData().getString(puid+".chatcolor").charAt(0);
         } else {
-            setChatColor(ChatColor.WHITE, player);
-            cc = settings.getData().getString(puid+".chatcolor").charAt(0);
+            settingsGeneral.setChatColor(ChatColor.WHITE, player);
+            cc = settingsManager.getData().getString(puid+".chatcolor").charAt(0);
         }
 
 
@@ -62,10 +60,10 @@ public class ChatMessageEvent implements Listener {
         TextComponent textComponent = new TextComponent(messaggio);
         textComponent.setColor(ChatColor.getByChar(cc).asBungee());
 
-        if(settings.getData().getBoolean(puid + ".chatbold"))textComponent.setBold(true);
-        if(settings.getData().getBoolean(puid + ".chatitalic"))textComponent.setItalic(true);
-        if(settings.getData().getBoolean(puid + ".chatunderlined"))textComponent.setUnderlined(true);
-        if(settings.getData().getBoolean(puid + ".chatstrikethrough"))textComponent.setStrikethrough(true);
+        if(settingsManager.getData().getBoolean(puid + ".chatbold"))textComponent.setBold(true);
+        if(settingsManager.getData().getBoolean(puid + ".chatitalic"))textComponent.setItalic(true);
+        if(settingsManager.getData().getBoolean(puid + ".chatunderlined"))textComponent.setUnderlined(true);
+        if(settingsManager.getData().getBoolean(puid + ".chatstrikethrough"))textComponent.setStrikethrough(true);
         messaggio = TextComponent.toLegacyText(textComponent);
 
         String message = chatcolor.chat(chatcolor.hex(plugin.getConfig().getString("chat").replaceAll("%player%", playername)));

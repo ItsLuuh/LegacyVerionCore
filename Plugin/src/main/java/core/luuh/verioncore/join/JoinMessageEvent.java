@@ -1,6 +1,6 @@
 package core.luuh.verioncore.join;
 
-import core.luuh.verioncore.VerionAPI;
+import core.luuh.verioncore.VerionAPIManager;
 import core.luuh.verioncore.utils.SettingsManager;
 import core.luuh.verioncore.utils.chatcolor;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -15,7 +15,7 @@ import core.luuh.verioncore.utils.GeneralUtils;
 import java.util.List;
 import java.util.UUID;
 
-import static core.luuh.verioncore.VerionAPI.*;
+import static core.luuh.verioncore.VerionAPIManager.*;
 
 public class JoinMessageEvent implements Listener {
 
@@ -23,8 +23,8 @@ public class JoinMessageEvent implements Listener {
 
     public JoinMessageEvent(VerionCore plugin) {this.plugin = plugin;}
 
-    private static GeneralUtils settings = GeneralUtils.getInstance();
-    private final SettingsManager settingsm = SettingsManager.getInstance();
+    private static GeneralUtils settingsGeneral = GeneralUtils.getInstance();
+    private final SettingsManager settingsManager = SettingsManager.getInstance();
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e){
@@ -32,19 +32,19 @@ public class JoinMessageEvent implements Listener {
         Player player = e.getPlayer();
         String playername = player.getDisplayName();
         int joins = plugin.getConfig().getInt("joins");
-        String joinmessage = settings.getFromConfig("joinmessage", player).replaceAll("%joins%", String.valueOf(joins));
+        String joinmessage = settingsGeneral.getFromConfig("joinmessage", player).replaceAll("%joins%", String.valueOf(joins));
         if(player.hasPlayedBefore()){
-            e.setJoinMessage(chatcolor.chat(settings.getFromConfig("JOIN_MSG",player)));
+            e.setJoinMessage(chatcolor.chat(settingsGeneral.getFromConfig("JOIN_MSG",player)));
             UUID puid = player.getUniqueId();
-            settingsm.getData().set(puid+".name", playername);
+            settingsManager.getData().set(puid+".name", playername);
 
-            if(settingsm.getData().getString(puid+".nickcolor") == null){
-                setNickColor(ChatColor.WHITE, player);
+            if(settingsManager.getData().getString(puid+".nickcolor") == null){
+                settingsGeneral.setNickColor(ChatColor.WHITE, player);
             }
 
-            if(settingsm.getData().getString(puid+".chatcolor") == null){
-                setChatColor(ChatColor.WHITE, player);}
-            settingsm.saveData();
+            if(settingsManager.getData().getString(puid+".chatcolor") == null){
+                settingsGeneral.setChatColor(ChatColor.WHITE, player);}
+            settingsManager.saveData();
         } else{
 
 
@@ -52,16 +52,16 @@ public class JoinMessageEvent implements Listener {
             plugin.getConfig().set("joins", joins+1);
             plugin.saveConfig();
             UUID puid = player.getUniqueId();
-            settingsm.getData().set(puid+".name", playername);
-            setNickColor(ChatColor.WHITE, player);
-            setChatColor(ChatColor.WHITE, player);
-            setBChatSpecial("bold", player, false);
-            setBChatSpecial("italic", player, false);
-            setBChatSpecial("underlined", player, false);
-            setBChatSpecial("strikethrough", player, false);
-            settingsm.saveData();
+            settingsManager.getData().set(puid+".name", playername);
+            settingsGeneral.setNickColor(ChatColor.WHITE, player);
+            settingsGeneral.setChatColor(ChatColor.WHITE, player);
+            settingsGeneral.setBChatSpecial("bold", player, false);
+            settingsGeneral.setBChatSpecial("italic", player, false);
+            settingsGeneral.setBChatSpecial("underlined", player, false);
+            settingsGeneral.setBChatSpecial("strikethrough", player, false);
+            settingsManager.saveData();
         }
-        boolean onjoinmessage = settings.getBooleanFromConfig("spawn.on-join-message.enabled");
+        boolean onjoinmessage = settingsGeneral.getBooleanFromConfig("spawn.on-join-message.enabled");
         if(onjoinmessage) {
             List<String> messages = plugin.getConfig().getStringList("spawn.on-join-message.message");
             for (String message : messages) {
@@ -69,12 +69,12 @@ public class JoinMessageEvent implements Listener {
             }
         }
 
-        boolean titles = settings.getBooleanFromConfig("spawn.title.enabled");
+        boolean titles = settingsGeneral.getBooleanFromConfig("spawn.title.enabled");
         if(titles) {
-            String t = chatcolor.chat(chatcolor.hex(settings.getFromConfigS("spawn.title.join-title-msg")));
-            String st = chatcolor.chat(chatcolor.hex(settings.getFromConfigS("spawn.title.join-subtitle-msg")));
+            String t = chatcolor.chat(chatcolor.hex(settingsGeneral.getFromConfigS("spawn.title.join-title-msg")));
+            String st = chatcolor.chat(chatcolor.hex(settingsGeneral.getFromConfigS("spawn.title.join-subtitle-msg")));
 
-            player.sendTitle(PlaceholderAPI.setPlaceholders(e.getPlayer(), t),PlaceholderAPI.setPlaceholders(e.getPlayer(), st), Integer.parseInt(settings.getFromConfigS("spawn.title.fadeIn")), Integer.parseInt(settings.getFromConfigS("spawn.title.stay")), Integer.parseInt(settings.getFromConfigS("spawn.title.fadeOut")));
+            player.sendTitle(PlaceholderAPI.setPlaceholders(e.getPlayer(), t),PlaceholderAPI.setPlaceholders(e.getPlayer(), st), Integer.parseInt(settingsGeneral.getFromConfigS("spawn.title.fadeIn")), Integer.parseInt(settingsGeneral.getFromConfigS("spawn.title.stay")), Integer.parseInt(settingsGeneral.getFromConfigS("spawn.title.fadeOut")));
         }
     }
 

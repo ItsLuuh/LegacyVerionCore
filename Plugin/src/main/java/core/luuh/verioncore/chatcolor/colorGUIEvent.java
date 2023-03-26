@@ -1,6 +1,6 @@
 package core.luuh.verioncore.chatcolor;
 
-import core.luuh.verioncore.VerionAPI;
+import core.luuh.verioncore.VerionAPIManager;
 import core.luuh.verioncore.VerionCore;
 import core.luuh.verioncore.utils.GeneralUtils;
 import core.luuh.verioncore.utils.SettingsManager;
@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.UUID;
 
-import static core.luuh.verioncore.VerionAPI.*;
+import static core.luuh.verioncore.VerionAPIManager.*;
 
 public class colorGUIEvent implements Listener {
 
@@ -37,12 +37,12 @@ public class colorGUIEvent implements Listener {
         if(settingsManager.getData().getBoolean(puid+"."+placeholder)){ //if placeholder true
             settingsManager.getData().set(puid+"."+placeholder, false);
             settingsManager.saveData();
-            VerionAPI.setEnchanted(item, false);
+            VerionAPIManager.setEnchanted(item, false);
             player.sendMessage(chatcolor.chat(chatcolor.hex(settingsGeneral.getFromConfigU("MSG_CC_REMOVED_S", player, special.toUpperCase()))));
         } else if(!settingsManager.getData().getBoolean(puid + "."+placeholder)){ //if placeholder false
             settingsManager.getData().set(puid+"."+placeholder, true);
             settingsManager.saveData();
-            VerionAPI.setEnchanted(item, true);
+            VerionAPIManager.setEnchanted(item, true);
             player.sendMessage(chatcolor.chat(chatcolor.hex(settingsGeneral.getFromConfigU("MSG_CC_ADDED_S", player, special.toUpperCase()))));
         }
 
@@ -51,7 +51,7 @@ public class colorGUIEvent implements Listener {
     @EventHandler
     public void clickEvent(InventoryClickEvent e){
 
-        if(VerionAPI.titleGUICheck(e, "guititles.chatcolor")){
+        if(VerionAPIManager.titleGUICheck(e, "guititles.chatcolor")){
 
             Player player = (Player) e.getWhoClicked();
             e.setCancelled(true);
@@ -60,63 +60,63 @@ public class colorGUIEvent implements Listener {
             switch (e.getSlot()){
 
                 case 10:
-                    setChatColor(ChatColor.WHITE, player);
+                    settingsGeneral.setChatColor(ChatColor.WHITE, player);
                     break;
 
                 case 11:
-                    setChatColor(ChatColor.GOLD, player);
+                    settingsGeneral.setChatColor(ChatColor.GOLD, player);
                     break;
                 case 12:
-                    setChatColor(ChatColor.RED, player);
+                    settingsGeneral.setChatColor(ChatColor.RED, player);
                     break;
 
                 case 13:
-                    setChatColor(ChatColor.AQUA, player);
+                    settingsGeneral.setChatColor(ChatColor.AQUA, player);
                     break;
                 case 14:
-                    setChatColor(ChatColor.YELLOW, player);
+                    settingsGeneral.setChatColor(ChatColor.YELLOW, player);
                     break;
 
                 case 15:
-                    setChatColor(ChatColor.GREEN, player);
+                    settingsGeneral.setChatColor(ChatColor.GREEN, player);
                     break;
 
                 case 16:
-                    setChatColor(ChatColor.LIGHT_PURPLE, player);
+                    settingsGeneral.setChatColor(ChatColor.LIGHT_PURPLE, player);
                     break;
 
                 case 19:
-                    setChatColor(ChatColor.DARK_GRAY, player);
+                    settingsGeneral.setChatColor(ChatColor.DARK_GRAY, player);
                     break;
 
                 case 20:
-                    setChatColor(ChatColor.GRAY, player);
+                    settingsGeneral.setChatColor(ChatColor.GRAY, player);
                     break;
                 case 21:
-                    setChatColor(ChatColor.DARK_PURPLE, player);
+                    settingsGeneral.setChatColor(ChatColor.DARK_PURPLE, player);
                     break;
 
                 case 22:
-                    setChatColor(ChatColor.DARK_AQUA, player);
+                    settingsGeneral.setChatColor(ChatColor.DARK_AQUA, player);
                     break;
                 case 23:
-                    setChatColor(ChatColor.DARK_BLUE, player);
+                    settingsGeneral.setChatColor(ChatColor.DARK_BLUE, player);
                     break;
 
                 case 24:
-                    setChatColor(ChatColor.BLUE, player);
+                    settingsGeneral.setChatColor(ChatColor.BLUE, player);
                     break;
 
                 case 25:
-                    setChatColor(ChatColor.DARK_GREEN, player);
+                    settingsGeneral.setChatColor(ChatColor.DARK_GREEN, player);
                     break;
 
                 case 30:
-                    setChatColor(ChatColor.DARK_RED, player);
+                    settingsGeneral.setChatColor(ChatColor.DARK_RED, player);
                     break;
 
                 case 32:
-                    setChatColor(ChatColor.BLACK, player);
+                    settingsGeneral.setChatColor(ChatColor.BLACK, player);
                     break;
 
                 case 31:
@@ -138,7 +138,7 @@ public class colorGUIEvent implements Listener {
             }
 
         }
-        else if (VerionAPI.titleGUICheck(e, "guititles.nickcolor")){
+        else if (VerionAPIManager.titleGUICheck(e, "guititles.nickcolor")){
 
             Player player = (Player) e.getWhoClicked();
             e.setCancelled(true);
@@ -146,63 +146,63 @@ public class colorGUIEvent implements Listener {
             switch (e.getSlot()){
 
                 case 10:
-                    setNickColor(ChatColor.WHITE, player);
+                    settingsGeneral.setNickColor(ChatColor.WHITE, player);
                     break;
 
                 case 11:
-                    setNickColor(ChatColor.GOLD, player);
+                    settingsGeneral.setNickColor(ChatColor.GOLD, player);
                     break;
                 case 12:
-                    setNickColor(ChatColor.RED, player);
+                    settingsGeneral.setNickColor(ChatColor.RED, player);
                     break;
 
                 case 13:
-                    setNickColor(ChatColor.AQUA, player);
+                    settingsGeneral.setNickColor(ChatColor.AQUA, player);
                     break;
                 case 14:
-                    setNickColor(ChatColor.YELLOW, player);
+                    settingsGeneral.setNickColor(ChatColor.YELLOW, player);
                     break;
 
                 case 15:
-                    setNickColor(ChatColor.GREEN, player);
+                    settingsGeneral.setNickColor(ChatColor.GREEN, player);
                     break;
 
                 case 16:
-                    setNickColor(ChatColor.LIGHT_PURPLE, player);
+                    settingsGeneral.setNickColor(ChatColor.LIGHT_PURPLE, player);
                     break;
 
                 case 19:
-                    setNickColor(ChatColor.DARK_GRAY, player);
+                    settingsGeneral.setNickColor(ChatColor.DARK_GRAY, player);
                     break;
 
                 case 20:
-                    setNickColor(ChatColor.GRAY, player);
+                    settingsGeneral.setNickColor(ChatColor.GRAY, player);
                     break;
                 case 21:
-                    setNickColor(ChatColor.DARK_PURPLE, player);
+                    settingsGeneral.setNickColor(ChatColor.DARK_PURPLE, player);
                     break;
 
                 case 22:
-                    setNickColor(ChatColor.DARK_AQUA, player);
+                    settingsGeneral.setNickColor(ChatColor.DARK_AQUA, player);
                     break;
                 case 23:
-                    setNickColor(ChatColor.DARK_BLUE, player);
+                    settingsGeneral.setNickColor(ChatColor.DARK_BLUE, player);
                     break;
 
                 case 24:
-                    setNickColor(ChatColor.BLUE, player);
+                    settingsGeneral.setNickColor(ChatColor.BLUE, player);
                     break;
 
                 case 25:
-                    setNickColor(ChatColor.DARK_GREEN, player);
+                    settingsGeneral.setNickColor(ChatColor.DARK_GREEN, player);
                     break;
 
                 case 30:
-                    setNickColor(ChatColor.DARK_RED, player);
+                    settingsGeneral.setNickColor(ChatColor.DARK_RED, player);
                     break;
 
                 case 32:
-                    setNickColor(ChatColor.BLACK, player);
+                    settingsGeneral.setNickColor(ChatColor.BLACK, player);
                     break;
 
             }

@@ -1,6 +1,6 @@
 package core.luuh.verioncore.chatcolor;
 
-import core.luuh.verioncore.VerionAPI;
+import core.luuh.verioncore.VerionAPIManager;
 import core.luuh.verioncore.VerionCore;
 import core.luuh.verioncore.utils.GeneralUtils;
 import core.luuh.verioncore.utils.SettingsManager;
@@ -51,116 +51,116 @@ public class chatnickcolorCommand implements CommandExecutor {
         Inventory gui = null;
 
         if(tipo==0) {
-            gui = VerionAPI.createChestGUI(player, 6, plugin.getConfig().getString("guititles.chatcolor"));
+            gui = VerionAPIManager.createChestGUI(player, 6, plugin.getConfig().getString("guititles.chatcolor"));
 
         } else if(tipo==1) {
-            gui = VerionAPI.createChestGUI(player, 6, plugin.getConfig().getString("guititles.nickcolor"));
+            gui = VerionAPIManager.createChestGUI(player, 6, plugin.getConfig().getString("guititles.nickcolor"));
         }
 
-        ItemStack si = VerionAPI.createStartItem(Material.WHITE_WOOL, 1);
-        VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&f"+player.getName())));
-        ItemStack white = VerionAPI.createFinalItem(si);
+        ItemStack si = VerionAPIManager.createStartItem(Material.WHITE_WOOL, 1);
+        VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&f"+player.getName())));
+        ItemStack white = VerionAPIManager.createFinalItem(si);
 
-        VerionAPI.setItemMaterial(si, Material.ORANGE_WOOL);
-        VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&6"+player.getName())));
-        ItemStack orange = VerionAPI.createFinalItem(si);
+        VerionAPIManager.setItemMaterial(si, Material.ORANGE_WOOL);
+        VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&6"+player.getName())));
+        ItemStack orange = VerionAPIManager.createFinalItem(si);
 
-        VerionAPI.setItemMaterial(si, Material.RED_TERRACOTTA);
-        VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&c"+player.getName())));
-        ItemStack light_red = VerionAPI.createFinalItem(si);
+        VerionAPIManager.setItemMaterial(si, Material.RED_TERRACOTTA);
+        VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&c"+player.getName())));
+        ItemStack light_red = VerionAPIManager.createFinalItem(si);
 
-        VerionAPI.setItemMaterial(si, Material.LIGHT_BLUE_WOOL);
-        VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&b"+player.getName())));
-        ItemStack light_blue = VerionAPI.createFinalItem(si);
+        VerionAPIManager.setItemMaterial(si, Material.LIGHT_BLUE_WOOL);
+        VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&b"+player.getName())));
+        ItemStack light_blue = VerionAPIManager.createFinalItem(si);
 
-        VerionAPI.setItemMaterial(si, Material.YELLOW_WOOL);
-        VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&e"+player.getName())));
-        ItemStack yellow = VerionAPI.createFinalItem(si);
+        VerionAPIManager.setItemMaterial(si, Material.YELLOW_WOOL);
+        VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&e"+player.getName())));
+        ItemStack yellow = VerionAPIManager.createFinalItem(si);
 
-        VerionAPI.setItemMaterial(si, Material.LIME_WOOL);
-        VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&a"+player.getName())));
-        ItemStack lime = VerionAPI.createFinalItem(si);
+        VerionAPIManager.setItemMaterial(si, Material.LIME_WOOL);
+        VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&a"+player.getName())));
+        ItemStack lime = VerionAPIManager.createFinalItem(si);
 
-        VerionAPI.setItemMaterial(si, Material.PINK_WOOL);
-        VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&d"+player.getName())));
-        ItemStack pink = VerionAPI.createFinalItem(si);
+        VerionAPIManager.setItemMaterial(si, Material.PINK_WOOL);
+        VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&d"+player.getName())));
+        ItemStack pink = VerionAPIManager.createFinalItem(si);
 
-        VerionAPI.setItemMaterial(si, Material.GRAY_WOOL);
-        VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&8"+player.getName())));
-        ItemStack gray = VerionAPI.createFinalItem(si);
+        VerionAPIManager.setItemMaterial(si, Material.GRAY_WOOL);
+        VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&8"+player.getName())));
+        ItemStack gray = VerionAPIManager.createFinalItem(si);
 
-        VerionAPI.setItemMaterial(si, Material.LIGHT_GRAY_WOOL);
-        VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&7"+player.getName())));
-        ItemStack light_gray = VerionAPI.createFinalItem(si);
+        VerionAPIManager.setItemMaterial(si, Material.LIGHT_GRAY_WOOL);
+        VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&7"+player.getName())));
+        ItemStack light_gray = VerionAPIManager.createFinalItem(si);
 
-        VerionAPI.setItemMaterial(si, Material.PURPLE_WOOL);
-        VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&5"+player.getName())));
-        ItemStack purple = VerionAPI.createFinalItem(si);
+        VerionAPIManager.setItemMaterial(si, Material.PURPLE_WOOL);
+        VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&5"+player.getName())));
+        ItemStack purple = VerionAPIManager.createFinalItem(si);
 
-        VerionAPI.setItemMaterial(si, Material.CYAN_WOOL);
-        VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&3"+player.getName())));
-        ItemStack cyan = VerionAPI.createFinalItem(si);
+        VerionAPIManager.setItemMaterial(si, Material.CYAN_WOOL);
+        VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&3"+player.getName())));
+        ItemStack cyan = VerionAPIManager.createFinalItem(si);
 
-        VerionAPI.setItemMaterial(si, Material.BLUE_WOOL);
-        VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&1"+player.getName())));
-        ItemStack blue = VerionAPI.createFinalItem(si);
+        VerionAPIManager.setItemMaterial(si, Material.BLUE_WOOL);
+        VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&1"+player.getName())));
+        ItemStack blue = VerionAPIManager.createFinalItem(si);
 
-        VerionAPI.setItemMaterial(si, Material.LIGHT_BLUE_TERRACOTTA);
-        VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&9"+player.getName())));
-        ItemStack mid_blue = VerionAPI.createFinalItem(si);
+        VerionAPIManager.setItemMaterial(si, Material.LIGHT_BLUE_TERRACOTTA);
+        VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&9"+player.getName())));
+        ItemStack mid_blue = VerionAPIManager.createFinalItem(si);
 
-        VerionAPI.setItemMaterial(si, Material.GREEN_WOOL);
-        VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&2"+player.getName())));
-        ItemStack green = VerionAPI.createFinalItem(si);
+        VerionAPIManager.setItemMaterial(si, Material.GREEN_WOOL);
+        VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&2"+player.getName())));
+        ItemStack green = VerionAPIManager.createFinalItem(si);
 
-        VerionAPI.setItemMaterial(si, Material.RED_WOOL);
-        VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&4"+player.getName())));
-        ItemStack red = VerionAPI.createFinalItem(si);
+        VerionAPIManager.setItemMaterial(si, Material.RED_WOOL);
+        VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&4"+player.getName())));
+        ItemStack red = VerionAPIManager.createFinalItem(si);
 
-        VerionAPI.setItemMaterial(si, Material.BLACK_WOOL);
-        VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&0"+player.getName())));
-        ItemStack black = VerionAPI.createFinalItem(si);
+        VerionAPIManager.setItemMaterial(si, Material.BLACK_WOOL);
+        VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&0"+player.getName())));
+        ItemStack black = VerionAPIManager.createFinalItem(si);
 
-        VerionAPI.fullPanes("6", false, gui, Material.BLACK_STAINED_GLASS_PANE);
+        VerionAPIManager.fullPanes("6", false, gui, Material.BLACK_STAINED_GLASS_PANE);
 
         if(tipo == 0){
 
-            VerionAPI.setItemMaterial(si, Material.IRON_BLOCK);
-            VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&f&l"+player.getName())));
-            ItemStack bold = VerionAPI.createFinalItem(si);
+            VerionAPIManager.setItemMaterial(si, Material.IRON_BLOCK);
+            VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&f&l"+player.getName())));
+            ItemStack bold = VerionAPIManager.createFinalItem(si);
 
-            VerionAPI.setItemMaterial(si, Material.CALCITE);
-            VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&f&o"+player.getName())));
-            ItemStack italic = VerionAPI.createFinalItem(si);
+            VerionAPIManager.setItemMaterial(si, Material.CALCITE);
+            VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&f&o"+player.getName())));
+            ItemStack italic = VerionAPIManager.createFinalItem(si);
 
-            VerionAPI.setItemMaterial(si, Material.POLISHED_DIORITE);
-            VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&f&n"+player.getName())));
-            ItemStack underlined = VerionAPI.createFinalItem(si);
+            VerionAPIManager.setItemMaterial(si, Material.POLISHED_DIORITE);
+            VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&f&n"+player.getName())));
+            ItemStack underlined = VerionAPIManager.createFinalItem(si);
 
-            VerionAPI.setItemMaterial(si, Material.DIORITE);
-            VerionAPI.setItemName(si, chatcolor.chat(chatcolor.hex("&f&m"+player.getName())));
-            ItemStack strikethrough = VerionAPI.createFinalItem(si);
+            VerionAPIManager.setItemMaterial(si, Material.DIORITE);
+            VerionAPIManager.setItemName(si, chatcolor.chat(chatcolor.hex("&f&m"+player.getName())));
+            ItemStack strikethrough = VerionAPIManager.createFinalItem(si);
 
             UUID puid = player.getUniqueId();
             if(settings.getData().getBoolean(puid+".chatbold")){ // true
-                VerionAPI.setEnchanted(bold, true);
+                VerionAPIManager.setEnchanted(bold, true);
             } else if(!settings.getData().getBoolean(puid + ".chatbold")){ // false
-                VerionAPI.setEnchanted(bold, false);
+                VerionAPIManager.setEnchanted(bold, false);
             }
             if(settings.getData().getBoolean(puid+".chatitalic")){
-                VerionAPI.setEnchanted(italic, true);
+                VerionAPIManager.setEnchanted(italic, true);
             } else if(!settings.getData().getBoolean(puid + ".chatitalic")){
-                VerionAPI.setEnchanted(italic, false);
+                VerionAPIManager.setEnchanted(italic, false);
             }
             if(settings.getData().getBoolean(puid+".chatunderlined")){
-                VerionAPI.setEnchanted(underlined, true);
+                VerionAPIManager.setEnchanted(underlined, true);
             } else if(!settings.getData().getBoolean(puid + ".chatunderlined")){
-                VerionAPI.setEnchanted(underlined, false);
+                VerionAPIManager.setEnchanted(underlined, false);
             }
             if(settings.getData().getBoolean(puid+".chatstrikethrough")){
-                VerionAPI.setEnchanted(strikethrough, true);
+                VerionAPIManager.setEnchanted(strikethrough, true);
             } else if(!settings.getData().getBoolean(puid + ".chatstrikethrough")){
-                VerionAPI.setEnchanted(strikethrough, false);
+                VerionAPIManager.setEnchanted(strikethrough, false);
             }
 
             gui.setItem(39, underlined);

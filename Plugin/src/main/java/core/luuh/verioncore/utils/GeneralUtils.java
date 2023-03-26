@@ -1,7 +1,11 @@
 package core.luuh.verioncore.utils;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import core.luuh.verioncore.VerionCore;
+
+import java.util.UUID;
+
 
 public class GeneralUtils {
 
@@ -68,10 +72,60 @@ public class GeneralUtils {
         }
     }
 
-
+    private static final SettingsManager settingsManager = SettingsManager.getInstance();
 
     public boolean getBooleanFromConfig(String s){
         return plugin.getConfig().getBoolean(s);
+    }
+
+    public void setChatColor(ChatColor color, Player player){
+
+        UUID puid = player.getUniqueId();
+        settingsManager.getData().set(puid+".chatcolor", color.getChar());
+        settingsManager.saveData();
+
+        player.sendMessage(chatcolor.chat(chatcolor.hex(getFromConfigU("MSG_CC_SET", player, color.toString().toUpperCase()+getFromConfigS("MSG_CNC_COLOR")))));
+
+    }
+
+    public void setNickColor(ChatColor color, Player player){
+        UUID puid = player.getUniqueId();
+        settingsManager.getData().set(puid+".nickcolor", color.getChar());
+        settingsManager.saveData();
+
+        player.sendMessage(chatcolor.chat(chatcolor.hex(getFromConfigU("MSG_NC_SET", player, color.toString().toUpperCase()+getFromConfigS("MSG_CNC_COLOR")))));
+    }
+
+    public static void setChatSpecial(String special, Player player){
+
+        UUID puid = player.getUniqueId();
+        String placeholder = null;
+        if(special.equalsIgnoreCase("strikethrough"))placeholder = "chatstrikethrough";
+        if(special.equalsIgnoreCase("underlined"))placeholder = "chatunderlined";
+        if(special.equalsIgnoreCase("bold"))placeholder = "chatbold";
+        if(special.equalsIgnoreCase("italic"))placeholder = "chatitalic";
+
+        if(settingsManager.getData().getBoolean(puid+"."+placeholder)){ //if placeholder true
+            settingsManager.getData().set(puid+"."+placeholder, false);
+        } else if(!settingsManager.getData().getBoolean(puid + "."+placeholder)){ //if placeholder false
+            settingsManager.getData().set(puid+"."+placeholder, true);
+        }
+        settingsManager.saveData();
+
+    }
+
+    public static void setBChatSpecial(String special, Player player, Boolean bool){
+
+        UUID puid = player.getUniqueId();
+        String placeholder = null;
+        if(special.equalsIgnoreCase("strikethrough"))placeholder = "chatstrikethrough";
+        if(special.equalsIgnoreCase("underlined"))placeholder = "chatunderlined";
+        if(special.equalsIgnoreCase("bold"))placeholder = "chatbold";
+        if(special.equalsIgnoreCase("italic"))placeholder = "chatitalic";
+
+        settingsManager.getData().set(puid+"."+placeholder, bool);
+        settingsManager.saveData();
+
     }
 
 

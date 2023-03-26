@@ -26,6 +26,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
+import static core.luuh.verioncore.VerionAPIManager.logConsole;
+
 public final class VerionCore extends JavaPlugin {
 
     private NMS nmsHandler;
@@ -39,9 +41,6 @@ public final class VerionCore extends JavaPlugin {
 
     final String versionplugin = this.getDescription().getVersion();
 
-    public void logConsole(String message) {
-        Bukkit.getConsoleSender().sendMessage(chatcolor.chat(chatcolor.hex(message)));
-    }
     private static Chat chat = null;
 
     public static Chat getChat() {

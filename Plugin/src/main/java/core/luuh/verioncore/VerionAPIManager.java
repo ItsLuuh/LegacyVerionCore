@@ -15,14 +15,16 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static core.luuh.verioncore.VerionCore.getInstance;
 import static core.luuh.verioncore.utils.chatcolor.chat;
 import static core.luuh.verioncore.utils.chatcolor.hex;
 
-public interface VerionAPIManager {
+ public interface VerionAPIManager {
 
-    public static Inventory createChestGUI(Player player, Integer size, String title){
+     static Inventory createChestGUI(Player player, Integer size, String title){
 
         // Creating a GUI of chest type.
 
@@ -32,7 +34,7 @@ public interface VerionAPIManager {
 
     }
 
-    public static void createDispenserGUI(Player player, String title){
+     static void createDispenserGUI(Player player, String title){
 
         // Creating a GUI of dispenser type.
 
@@ -40,7 +42,7 @@ public interface VerionAPIManager {
 
     }
 
-    public static void createHopperGUI(Player player, String title){
+     static void createHopperGUI(Player player, String title){
 
         // Creating a GUI of Hopper type.
 
@@ -48,7 +50,7 @@ public interface VerionAPIManager {
 
     }
 
-    public static ItemStack createStartItem(Material mat, Integer amount){
+     static ItemStack createStartItem(Material mat, Integer amount){
 
         // Settig the material of the Item.
 
@@ -56,7 +58,7 @@ public interface VerionAPIManager {
 
     }
 
-    public static ItemStack createFinalItem(ItemStack itemStack){
+     static ItemStack createFinalItem(ItemStack itemStack){
 
         // Settig the material of the Item.
 
@@ -64,7 +66,7 @@ public interface VerionAPIManager {
 
     }
 
-    public static void setItemMaterial(ItemStack itemStack, Material material){
+     static void setItemMaterial(ItemStack itemStack, Material material){
 
         // Settig the material of the Item.
 
@@ -72,7 +74,7 @@ public interface VerionAPIManager {
 
     }
 
-    public static void setItemAmout(ItemStack itemStack, Integer amount){
+     static void setItemAmout(ItemStack itemStack, Integer amount){
 
         // Settig the material of the Item.
 
@@ -80,7 +82,7 @@ public interface VerionAPIManager {
 
     }
 
-    public static void setItemName(ItemStack itemStack, String name){
+     static void setItemName(ItemStack itemStack, String name){
 
         // Setting the name of the item.
 
@@ -90,7 +92,7 @@ public interface VerionAPIManager {
 
     }
 
-    public static void setLore(ItemStack itemStack, ArrayList lore){
+     static void setLore(ItemStack itemStack, ArrayList lore){
 
         // Setting the lore of the item.
 
@@ -100,7 +102,7 @@ public interface VerionAPIManager {
 
     }
 
-    public static void setCustomModelData(ItemStack itemStack, Integer custommodeldata){
+     static void setCustomModelData(ItemStack itemStack, Integer custommodeldata){
 
         // Setting the custommodeldata of the item.
 
@@ -110,7 +112,7 @@ public interface VerionAPIManager {
 
     }
 
-    public static void setEnchanted(ItemStack itemStack, Boolean enchanted){
+     static void setEnchanted(ItemStack itemStack, Boolean enchanted){
 
         if(enchanted) {
             itemStack.addUnsafeEnchantment(Enchantment.LURE, 1);
@@ -126,7 +128,7 @@ public interface VerionAPIManager {
 
     }
 
-    public static void cornerPanes(String righe, Inventory gui, Material pane) {
+     static void cornerPanes(String righe, Inventory gui, Material pane) {
         ItemStack Pane = new ItemStack(pane, 1);
         ItemMeta Panemeta = Pane.getItemMeta();
         Panemeta.setDisplayName(chat("&f"));
@@ -231,7 +233,7 @@ public interface VerionAPIManager {
 
     }
 
-    public static void fullPanes(String righe, Boolean wait, Inventory gui, Material pane){
+     static void fullPanes(String righe, Boolean wait, Inventory gui, Material pane){
 
         ItemStack Pane = new ItemStack(pane, 1);
         ItemMeta Panemeta = Pane.getItemMeta();
@@ -284,7 +286,7 @@ public interface VerionAPIManager {
         }
     }
 
-    public static boolean titleGUICheck(InventoryClickEvent e, String title){
+     static boolean titleGUICheck(InventoryClickEvent e, String title){
 
 
 
@@ -295,5 +297,31 @@ public interface VerionAPIManager {
         return  false;
 
     }
+
+     static void logConsole(String message) {
+        Bukkit.getConsoleSender().sendMessage(chatcolor.chat(chatcolor.hex(message)));
+    }
+
+     public static String chat(String message) {
+         return ChatColor.translateAlternateColorCodes('&', message);
+     }
+     public static String hex(String message) {
+         Pattern pattern = Pattern.compile("#[a-fA-F0-9]{6}");
+         Matcher matcher = pattern.matcher(message);
+         while (matcher.find()) {
+             String hexCode = message.substring(matcher.start(), matcher.end());
+             String replaceSharp = hexCode.replace('#', 'x');
+
+             char[] ch = replaceSharp.toCharArray();
+             StringBuilder builder = new StringBuilder("");
+             for (char c : ch) {
+                 builder.append("&" + c);
+             }
+
+             message = message.replace(hexCode, builder.toString());
+             matcher = pattern.matcher(message);
+         }
+         return net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', message);
+     }
 
 }

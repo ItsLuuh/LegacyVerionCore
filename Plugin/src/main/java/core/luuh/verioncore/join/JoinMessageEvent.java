@@ -55,10 +55,10 @@ public class JoinMessageEvent implements Listener {
             settingsm.getData().set(puid+".name", playername);
             setNickColor(ChatColor.WHITE, player);
             setChatColor(ChatColor.WHITE, player);
-            setChatSpecial("bold", player);
-            setChatSpecial("italic", player);
-            setChatSpecial("underlined", player);
-            setChatSpecial("strikethrough", player);
+            setBChatSpecial("bold", player, false);
+            setBChatSpecial("italic", player, false);
+            setBChatSpecial("underlined", player, false);
+            setBChatSpecial("strikethrough", player, false);
             settingsm.saveData();
         }
         boolean onjoinmessage = settings.getBooleanFromConfig("spawn.on-join-message.enabled");

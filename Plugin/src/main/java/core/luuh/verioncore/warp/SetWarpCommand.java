@@ -6,10 +6,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
+
 import core.luuh.verioncore.VerionCore;
 import core.luuh.verioncore.utils.GeneralUtils;
-import org.jetbrains.annotations.Nullable;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ public class SetWarpCommand implements CommandExecutor, TabCompleter {
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
+    public boolean onCommand( CommandSender commandSender,  Command command,  String s,  String[] strings) {
 
         if(commandSender instanceof Player) {
 
@@ -94,9 +94,9 @@ public class SetWarpCommand implements CommandExecutor, TabCompleter {
         return true;
     }
 
-    @Nullable
+    
     @Override
-    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public List<String> onTabComplete( CommandSender sender,  Command command,  String label,  String[] args) {
 
         if(command.getName().equalsIgnoreCase("delwarp") && args.length==1){
 

@@ -10,7 +10,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.Nullable;
+
 
 public class ItemsCommand implements Listener {
 
@@ -26,7 +26,7 @@ public class ItemsCommand implements Listener {
         if(plugin.getConfig().getBoolean("ItemsCommand.parkour")) {
 
             Player player = e.getPlayer();
-            @Nullable ItemStack item = e.getItem();
+             ItemStack item = e.getItem();
             String itemName;
             if (item != null && item.getType() == Material.LADDER && item.hasItemMeta()) {
                 itemName = e.getItem().getItemMeta().getDisplayName();

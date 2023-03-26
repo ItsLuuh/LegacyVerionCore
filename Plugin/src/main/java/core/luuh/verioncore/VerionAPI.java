@@ -43,7 +43,7 @@ public class VerionAPI {
         settingsManager.getData().set(puid+".chatcolor", color.getChar());
         settingsManager.saveData();
 
-        player.sendMessage(chatcolor.chat(chatcolor.hex(settingsGeneral.getFromConfigU("MSG_CC_SET", player, color.toString().toUpperCase()+"THIS COLOR"))));
+        player.sendMessage(chatcolor.chat(chatcolor.hex(settingsGeneral.getFromConfigU("MSG_CC_SET", player, color.toString().toUpperCase()+settingsGeneral.getFromConfigS("MSG_CNC_COLOR")))));
 
     }
 
@@ -52,7 +52,7 @@ public class VerionAPI {
         settingsManager.getData().set(puid+".nickcolor", color.getChar());
         settingsManager.saveData();
 
-        player.sendMessage(chatcolor.chat(chatcolor.hex(settingsGeneral.getFromConfigU("MSG_NC_SET", player, color.toString().toUpperCase()+"THIS COLOR"))));
+        player.sendMessage(chatcolor.chat(chatcolor.hex(settingsGeneral.getFromConfigU("MSG_NC_SET", player, color.toString().toUpperCase()+settingsGeneral.getFromConfigS("MSG_CNC_COLOR")))));
     }
 
     public static void setChatSpecial(String special, Player player){
@@ -69,6 +69,20 @@ public class VerionAPI {
         } else if(!settingsManager.getData().getBoolean(puid + "."+placeholder)){ //if placeholder false
             settingsManager.getData().set(puid+"."+placeholder, true);
         }
+        settingsManager.saveData();
+
+    }
+
+    public static void setBChatSpecial(String special, Player player, Boolean bool){
+
+        UUID puid = player.getUniqueId();
+        String placeholder = null;
+        if(special.equalsIgnoreCase("strikethrough"))placeholder = "chatstrikethrough";
+        if(special.equalsIgnoreCase("underlined"))placeholder = "chatunderlined";
+        if(special.equalsIgnoreCase("bold"))placeholder = "chatbold";
+        if(special.equalsIgnoreCase("italic"))placeholder = "chatitalic";
+
+        settingsManager.getData().set(puid+"."+placeholder, bool);
         settingsManager.saveData();
 
     }

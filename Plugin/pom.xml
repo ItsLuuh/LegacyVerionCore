@@ -8,7 +8,7 @@
     <artifactId>verioncore-plugin</artifactId>
     <packaging>jar</packaging>
     <name>VerionCORE</name>
-    <version>3.2-TOKYO</version> <!-- This is where I track the version -->
+    <version>3.2.1-TOKYO</version> <!-- This is where I track the version -->
 
     <repositories>
         <repository>
@@ -102,6 +102,11 @@
             <artifactId>adventure-text-minimessage</artifactId>
             <version>4.11.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>23.0.0</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -112,7 +117,7 @@
 
     <build>
         <directory>../target</directory> <!-- Build it one level up, because it is the one we care about -->
-        <finalName>VerionCORE-3.2-TOKYO</finalName>
+        <finalName>VerionCORE-3.2.1-TOKYO</finalName>
         <!-- Define filtering for the inclusion of plugin.yml, so we can utilize the pom.xml version in it -->
         <resources>
             <resource>

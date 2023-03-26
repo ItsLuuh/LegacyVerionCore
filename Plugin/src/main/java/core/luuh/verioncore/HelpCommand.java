@@ -7,7 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class HelpCommand implements CommandExecutor {
     private static GeneralUtils settings = GeneralUtils.getInstance();
 
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
+    public boolean onCommand( CommandSender commandSender,  Command command,  String s,  String[] strings) {
 
         if(command.getName().equalsIgnoreCase("help")) {
 

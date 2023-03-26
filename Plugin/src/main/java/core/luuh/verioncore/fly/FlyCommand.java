@@ -6,10 +6,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
+
 import core.luuh.verioncore.VerionCore;
 import core.luuh.verioncore.utils.GeneralUtils;
-import org.jetbrains.annotations.Nullable;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class FlyCommand implements CommandExecutor, TabCompleter {
     private static GeneralUtils settings = GeneralUtils.getInstance();
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand( CommandSender sender,  Command command,  String label,  String[] args) {
 
         if(sender instanceof Player) {
 
@@ -75,9 +75,9 @@ public class FlyCommand implements CommandExecutor, TabCompleter {
         return true;
     }
 
-    @Nullable
+    
     @Override
-    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public List<String> onTabComplete( CommandSender sender,  Command command,  String label,  String[] args) {
 
         if(args.length == 1){
             List<String> arguments = new ArrayList<>();

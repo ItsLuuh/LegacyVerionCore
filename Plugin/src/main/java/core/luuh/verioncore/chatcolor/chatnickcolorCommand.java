@@ -12,7 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.UUID;
 
@@ -25,7 +25,7 @@ public class chatnickcolorCommand implements CommandExecutor {
     private final SettingsManager settings = SettingsManager.getInstance();
 
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
+    public boolean onCommand( CommandSender commandSender,  Command command,  String s,  String[] strings) {
 
         if(commandSender instanceof Player player){
 

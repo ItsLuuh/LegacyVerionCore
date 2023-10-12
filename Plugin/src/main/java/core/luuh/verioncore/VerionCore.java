@@ -47,11 +47,13 @@ public final class VerionCore extends JavaPlugin {
         return chat;
     }
 
+    /*
     private boolean setupChat() {
         RegisteredServiceProvider<Chat> rsp = getServer().getServicesManager().getRegistration(Chat.class);
         chat = rsp.getProvider();
         return chat != null;
     }
+     */
 
     private final SettingsManager settings = SettingsManager.getInstance();
 
@@ -225,7 +227,7 @@ public final class VerionCore extends JavaPlugin {
         registerEvents();
         registerCommands();
 
-        setupChat();
+        //setupChat();
 
     }
 

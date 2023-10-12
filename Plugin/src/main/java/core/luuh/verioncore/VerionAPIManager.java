@@ -290,7 +290,7 @@ import static core.luuh.verioncore.utils.chatcolor.hex;
 
 
 
-        if(e.getView().getTitle().equalsIgnoreCase(chat(hex(getInstance().getConfig().getString(title))))){
+        if(e.getView().getTitle().equalsIgnoreCase(chatcolor.chat(chatcolor.hex(getInstance().getConfig().getString(title))))){
             return true;
         }
 

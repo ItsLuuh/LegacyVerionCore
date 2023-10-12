@@ -58,7 +58,12 @@ MSG_STEC_FLY_OFF: '%prefix%Hai impostato la &emodalità di volo&f di &e%player%&
   &aON&f.'
 MSG_STN_FLY_OFF: '%prefix%La tua &emodalità di volo&f è stata impostata a &aON&f.'
 MSG_WARP_SET: '%prefix%Hai impostato il warp.'
+MSG_CNC_COLOR: 'QUESTO'
 MSG_WARP_TP: '%prefix%Ti sei teletrasportato al warp.'
+MSG_CC_SET: '%prefix%Hai cambiato il colore della tua chat a: %arg%'
+MSG_NC_SET: '%prefix%Hai cambiato il colore della tua chat a: %arg%'
+MSG_CC_REMOVED_S: '%prefix%Hai aggiunto l''effetto speciale: %arg%'
+MSG_CC_ADDED_S: '%prefix%Hai rimosso l''effetto speciale: %arg%'
 spawn:
   join-tp-spawn: true
   on-join-message:
@@ -74,3 +79,6 @@ spawn:
     fadeIn: 20
     stay: 280
     fadeOut: 20
+guititles:
+  chatcolor: '&8&l» &8ChatColor'
+  nickcolor: '&8&l» &8NickColor'
